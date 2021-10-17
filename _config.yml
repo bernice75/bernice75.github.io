@@ -7,7 +7,7 @@ title: bernice75
 description: Personal website powered by Jekyll
 # baseurl: The subpath of your site
 # > set this to "", if you renamed the repository to <user>.github.io
-url: "https://bernice75.github.io"
+url: "bernice75.github.io"
 baseurl: "/bernice75"
 
 # LANDING PAGE

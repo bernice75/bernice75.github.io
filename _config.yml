@@ -5,7 +5,7 @@
 #content for nav.html
 title: mrkim.dev
 subtitle: 나의 작고 소중한 개발 블로그.
-description: "검색 엔진용 사이트 설명"
+description: "김미림의 개발 블로그"
 author:
   name: "김미림"
   # email: "[EMAIL_ADDRESS]"
@@ -23,8 +23,8 @@ subgreeting_two: #SUBGREETING_TWO_GOES_HERE
 nav_link_one_name: Home
 nav_link_one_link: /home/
 
-nav_link_two_name: Categories
-nav_link_two_link: "/categories"
+nav_link_two_name: Blog
+nav_link_two_link: "/blog"
 
 nav_link_three_name: #NAV_NAME_GOES_HERE
 nav_link_three_link: #NAV_LINK_GOES_HERE
@@ -60,6 +60,7 @@ social:
 # Build settings
 permalink: pretty
 paginate: 12
+paginate_path: "/blog/page:num/"
 
 defaults:
   - scope:

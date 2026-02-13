@@ -2,8 +2,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Backup, in lieu of jekyll-seo gem -->
-	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title | default: site.github.repository_name }}{% endif %}</title>
-	<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+	<title>{{ page.title }} | {{ site.title }}</title>
+	<meta name="description" content="{{ page.description }}">
 	<meta name="robots" content="index, follow">
 	<!-- End SEO backup -->
 

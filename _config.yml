@@ -20,8 +20,8 @@ subgreeting_two: #SUBGREETING_TWO_GOES_HERE
 # Again: after inputting your content, you may need to stop and restart jekyll server for changes to take effect.
 
 #content for nav.html (shown on desktop) navigation links
-nav_link_one_name: #NAV_NAME_GOES_HERE
-nav_link_one_link: #NAV_LINK_GOES_HERE
+nav_link_one_name: Home
+nav_link_one_link: /home/
 
 nav_link_two_name: Categories
 nav_link_two_link: "/categories"

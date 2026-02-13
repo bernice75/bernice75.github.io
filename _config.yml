@@ -1,13 +1,17 @@
 # Site settings
-  # Note: after inputting your content, you may need to stop and restart jekyll server for changes to take effect.
-  # When filling this file in, below, be sure to DELETE the "#" comments - example, greeting should look like - greeting: Hello, I'm Simpol.
+# Note: after inputting your content, you may need to stop and restart jekyll server for changes to take effect.
+# When filling this file in, below, be sure to DELETE the "#" comments - example, greeting should look like - greeting: Hello, I'm Simpol.
 
 #content for nav.html
-title: Simpol Theme
-subtitle: Focus on the writing, the content.
+title: mrkim.dev
+subtitle: 나의 작고 소중한 개발 블로그.
+description: "검색 엔진용 사이트 설명"
+author:
+  name: "김미림"
+  # email: "[EMAIL_ADDRESS]"
 
 #content for index.html
-  #Add your own info, deleting the comments "#". This data automatically writes to the Index page's mini, about section.
+#Add your own info, deleting the comments "#". This data automatically writes to the Index page's mini, about section.
 greeting: #GREETING_GOES_HERE | default: Hello, I'm Simpol.
 logo_img: #LOGO_IMG_SRC_GOES_HERE | default: /assets/img/simpol-theme-square-writing-logo.png
 subgreeting_one: #SUBGREETING_ONE_GOES_HERE
@@ -58,20 +62,19 @@ permalink: pretty
 paginate: 12
 
 defaults:
-  -
-    scope:
+  - scope:
       path: "assets/img"
     values:
       image: true
 
 plugins:
-- jekyll-sitemap
-- jekyll-seo-tag
-- jekyll-feed
-- jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
 exclude:
-- Gemfile
-- Gemfile.lock
-- package.json
-- README.md
-- vendor
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - README.md
+  - vendor

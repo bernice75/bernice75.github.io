@@ -4,3 +4,5 @@ _site
 vendor/
 .sass-cache/
 .jekyll-metadata
+.bundle_home/
+blog_content/

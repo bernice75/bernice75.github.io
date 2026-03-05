@@ -11,7 +11,18 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://simpoltheme.com"
   spec.license       = "ISC"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|_layouts|_includes|_posts|LICENSE|README)}i) }
+  spec.files         = begin
+    files = if Gem.win_platform?
+      Dir.glob("{assets,_layouts,_includes,_posts}/**/*", File::FNM_DOTMATCH) +
+        Dir.glob("README*") + ["LICENSE"]
+    else
+      `git ls-files -z`.split("\x0")
+    end
+    files.select { |f| f.match(%r{^(assets|_layouts|_includes|_posts|LICENSE|README)}i) && File.file?(f) }
+  rescue Errno::EACCES, Errno::ENOENT
+    (Dir.glob("{assets,_layouts,_includes,_posts}/**/*", File::FNM_DOTMATCH) +
+      Dir.glob("README*") + ["LICENSE"]).select { |f| File.file?(f) }
+  end
 
   spec.add_runtime_dependency "jekyll", "~> 3.4"
   spec.add_runtime_dependency "jekyll-paginate", "~> 1.1"

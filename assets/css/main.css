@@ -148,6 +148,42 @@ code {
   outline: none;
 }
 
+#blog-top-nav {
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 1.5rem 0;
+  padding: 0.75rem 0;
+  max-width: 100%;
+  width: auto;
+}
+#blog-top-nav .blog-top-nav__home {
+  color: #111;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-decoration: none;
+}
+#blog-top-nav .blog-top-nav__links {
+  align-items: center;
+  display: flex;
+  gap: 1.1rem;
+  justify-content: flex-end;
+}
+#blog-top-nav .blog-top-nav__links a {
+  color: #555;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+#blog-top-nav .blog-top-nav__links a:hover,
+#blog-top-nav .blog-top-nav__links a:focus {
+  color: #222;
+}
+
 
 
 
@@ -155,6 +191,17 @@ code {
   #PAGE-DEFAULT
 \*--------------------------------*/
 @media (min-width: 320px) {
+  #blog-top-nav {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  #blog-top-nav .blog-top-nav__home {
+    font-size: 1.35rem;
+  }
+  #blog-top-nav .blog-top-nav__links {
+    gap: 0.9rem;
+    width: 100%;
+  }
   #mini-about {
     margin: 0em 0em 3em 0em;
   }
@@ -177,7 +224,7 @@ code {
       margin: 4%;
 
   }
-  nav {
+  nav:not(#blog-top-nav) {
       position: relative;
       overflow: hidden;
       background-color: #fffefd; /* just in case */
@@ -187,14 +234,14 @@ code {
       margin: 3px 0px;
       border-bottom: 1px solid #dedede;
   }
-  nav a {
+  nav:not(#blog-top-nav) a {
       font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
       text-decoration: none;
   }
-  nav h1 {
+  nav:not(#blog-top-nav) h1 {
     font-size: 1.2em;
   }
-  nav p {
+  nav:not(#blog-top-nav) p {
     font-size: .8em;
   }
   .top-headline-photo {
@@ -231,6 +278,12 @@ code {
   }
 }
 @media (min-width: 768px) {
+  #blog-top-nav {
+    flex-wrap: nowrap;
+  }
+  #blog-top-nav .blog-top-nav__links {
+    width: auto;
+  }
   #mini-about .pull-left {
     margin-bottom: -1%;
   }
@@ -264,7 +317,7 @@ code {
       padding: 2%;
       margin: 0 5% 0 30%;
   }
-  nav {
+  nav:not(#blog-top-nav) {
       position: fixed;
       padding: 2.5em;
 			text-align: left;
@@ -272,10 +325,10 @@ code {
       margin: 0;
       border-bottom: none;
   }
-  nav h1 {
+  nav:not(#blog-top-nav) h1 {
     font-size: 1.7em;
   }
-  nav p {
+  nav:not(#blog-top-nav) p {
     font-size: 1em;
   }
 	footer {

@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 /* Simpol Theme - Download at: https://github.com/simpol-theme/simpol-theme-jekyll/releases
 	 Coded by & Copyright © reserved by Mathson Design, LLC and Scott Mathson
    More information can be found at https://mathsondesignco.com/simpol
@@ -30,20 +32,25 @@
 html {
   position: relative;
   min-height: 100%;
-  font-family: sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-weight: normal;
-  font-size: .9em;
+  font-size: 16px;
   color: #333;
 }
 body {
   background-color: #fffefd;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
 }
 h1,
 h2 {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-weight: 700;
   color: #222;
-  letter-spacing: .5px;
+  letter-spacing: -0.01em;
 	font-size: 1.7em;
   line-height: 1.5em;
 }
@@ -57,17 +64,17 @@ h6 {
 }
 h3,
 h4 {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 h5,
 h6 {
   font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, monospace;
 }
 p {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-weight: 400;
-  font-size: 0.95em;
-  line-height: 1.75em;
+  font-size: 1rem;
+  line-height: 1.75;
   color: #333;
 }
 article,
@@ -87,6 +94,38 @@ hr {
 img {
   width: 100%;
 }
+.img-90 {
+  width: 90%;
+  margin: 0 auto;
+}
+.img-80 {
+  width: 80%;
+  margin: 0 auto;
+}
+.img-70 {
+  width: 70%;
+  margin: 0 auto;
+}
+.img-50 {
+  width: 50%;
+  margin: 0 auto;
+}
+.img-30 {
+  width: 30%;
+  margin: 0 auto;
+}
+.img-20 {
+  width: 20%;
+  margin: 0 auto;
+}
+.img-10 {
+  width: 10%;
+  margin: 0 auto;
+}
+.img-5 {
+  width: 5%;
+  margin: 0 auto;
+}
 a {
   color: #777;
   background-color: transparent;
@@ -104,7 +143,7 @@ button:focus {
 }
 blockquote {
   margin: 0 0 5% 0;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   padding: 2%;
   border-left: 4px solid #eee;
 }
@@ -112,21 +151,51 @@ ul {
   list-style-type: circle;
 }
 li {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-weight: 400;
-  line-height: 1.5em;
+  line-height: 1.7;
   color: #333;
 }
-pre,
 code {
-  background-color: #333;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  line-height: 1rem;
+  background-color: #f6f8fa;
+  border: 1px solid #eaeef2;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #24292f;
+  padding: 0.12em 0.38em;
+}
+pre {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
   font-weight: 400;
-  font-size: .8rem;
-  padding: 2px;
-  color: #ededed;
-  overflow: auto;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #24292f;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  margin: 1rem 0 1.25rem;
+}
+pre code {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+/* Rouge syntax highlighting: comments only */
+.highlight .c,
+.highlight .cm,
+.highlight .c1 {
+  color: #6a737d;
+  font-style: italic;
+  opacity: 0.95;
 }
 .mono {
 	font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, monospace;
@@ -138,14 +207,40 @@ code {
   float: right;
 }
 .btn-primary {
-  font-size: .9em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Pretendard", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 	text-align: center;
-	color: white;
-  background-color: #777;
-  border: 0px;
-  padding: 1.2%;
+	color: #24292f;
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
   text-decoration: none;
   outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.12s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  color: #24292f;
+  background-color: #f6f8fa;
+  border-color: #8c959f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+}
+.btn-primary:focus-visible {
+  outline: 3px solid rgba(140, 149, 159, 0.35);
+  outline-offset: 2px;
 }
 
 #blog-top-nav {
@@ -315,7 +410,7 @@ code {
   }
   .main {
       padding: 2%;
-      margin: 0 5% 0 30%;
+      margin: 0 5% 0 25%;
   }
   nav:not(#blog-top-nav) {
       position: fixed;
@@ -432,3 +527,44 @@ footer p {
 .hidden {display: none;}
 .inline-block {display: inline-block;}
 .flex {display: flex;}
+
+.scroll-to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d0d7de;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #24292f;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.scroll-to-top:hover,
+.scroll-to-top:focus {
+  background-color: #f6f8fa;
+  border-color: #8c959f;
+  outline: none;
+}
+.scroll-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+  .scroll-to-top {
+    right: 0.9rem;
+    bottom: 0.9rem;
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -7,6 +7,7 @@ Simpol is a minimal, clean, and open source Jekyll theme for Github Pages.
 ![Screenshot](https://user-images.githubusercontent.com/178448/31042735-75abfb14-a563-11e7-9a32-d8f76384c90f.jpg)
 
 - [Installation](#installation)
+- [Post Date Setup](#post-date-setup)
 - [Current features](#current-features)
 - [Credits](#credits)
 - [Resources](#resources)
@@ -55,6 +56,28 @@ simpol-theme |  Auto-regeneration: enabled for '/srv/jekyll'
 simpol-theme |     Server address: http://0.0.0.0:4000/
 simpol-theme |   Server running... press ctrl-c to stop.
 ```
+
+## Post Date Setup
+
+If a new post does not appear in `/blog/`, check the `date` field in the post front matter.
+
+Jekyll skips posts that are considered future-dated. To avoid timezone issues, always include an explicit timezone offset.
+
+Example:
+
+```yaml
+---
+layout: post
+title: "My Post"
+date: 2026-03-05 10:30:00 +0900
+---
+```
+
+Recommended checks:
+
+1. Use filename format `_posts/YYYY-MM-DD-title.md`.
+2. Include timezone in `date` (for Korea: `+0900`).
+3. Run `bundle exec jekyll build --verbose` and confirm there is no `has a future date` message.
 
 ## Current Features
 

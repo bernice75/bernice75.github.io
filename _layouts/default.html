@@ -11,9 +11,35 @@
 
     </div>
 
+    <button id="scrollToTopBtn" class="scroll-to-top" type="button" aria-label="Back to top" title="Back to top">
+      Top
+    </button>
+
     {% include footer.html %}
 
 		{% include google-analytics.html %}
+
+    <script>
+      (function () {
+        var scrollBtn = document.getElementById("scrollToTopBtn");
+        if (!scrollBtn) return;
+
+        function toggleButton() {
+          if (window.scrollY > 200) {
+            scrollBtn.classList.add("is-visible");
+          } else {
+            scrollBtn.classList.remove("is-visible");
+          }
+        }
+
+        window.addEventListener("scroll", toggleButton, { passive: true });
+        scrollBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        toggleButton();
+      })();
+    </script>
 
   </body>
   <!-- Simpol Theme - Download at: https://simpoltheme.com/

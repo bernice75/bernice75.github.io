@@ -7,6 +7,8 @@ author:     "김미림"
 header-img: assets/img/posts/2026-03-05-config-tcp-server-refactoring/to-be.png
 
 categories:
+  - WebFlux
+  - Netty
   - Backend
   - Java
 ---

@@ -1,3 +1,5 @@
+# Git ignore rules only.
+# Codex access restrictions are managed in AGENTS.md.
 *.gem
 .bundle
 _site
@@ -6,3 +8,4 @@ vendor/
 .jekyll-metadata
 .bundle_home/
 blog_content/
+review/

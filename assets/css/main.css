@@ -47,6 +47,12 @@ body {
   word-break: keep-all;
 }
 
+body.lightbox-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
 h1,
 h2 {
   font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
@@ -102,6 +108,15 @@ hr {
 
 img {
   width: 100%;
+}
+
+article img.lightbox-enabled-image {
+  cursor: zoom-in;
+}
+
+article img.lightbox-enabled-image:focus-visible {
+  outline: 3px solid rgba(140, 149, 159, 0.35);
+  outline-offset: 4px;
 }
 
 .img-90 {
@@ -438,7 +453,7 @@ pre code {
 
   nav:not(#blog-top-nav) {
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
     background-color: #fffefd;
     text-align: center;
     width: 100%;
@@ -741,6 +756,82 @@ footer p {
   font-size: 0.88rem;
 }
 
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.image-lightbox[hidden] {
+  display: none;
+}
+
+.image-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(3px);
+}
+
+.image-lightbox__figure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: min(92vw, 1200px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.image-lightbox__img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: calc(92vh - 4rem);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.image-lightbox__caption {
+  max-width: min(92vw, 900px);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f8fafc;
+  text-align: center;
+}
+
+.image-lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.image-lightbox__close:hover,
+.image-lightbox__close:focus {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
 
 
 
@@ -798,8 +889,38 @@ footer p {
 @media (max-width: 767px) {
   article table {
     display: block;
+    width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  }
+
+  article table thead,
+  article table tbody,
+  article table tr {
+    white-space: nowrap;
+  }
+
+  article th,
+  article td {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.88rem;
+  }
+
+  article img,
+  article .img-90,
+  article .img-80,
+  article .img-70,
+  article .img-50,
+  article .img-30,
+  article .img-20,
+  article .img-10,
+  article .img-5 {
+    width: 100%;
+    max-width: 100%;
   }
 
   .post-toc {
@@ -877,6 +998,19 @@ footer p {
     bottom: 0.9rem;
     width: 40px;
     height: 40px;
+  }
+  .image-lightbox {
+    padding: 1rem;
+  }
+  .image-lightbox__figure {
+    max-width: 100%;
+  }
+  .image-lightbox__img {
+    max-height: calc(100vh - 7rem);
+  }
+  .image-lightbox__close {
+    top: 0.8rem;
+    right: 0.8rem;
   }
 }
 

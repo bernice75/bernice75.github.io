@@ -385,7 +385,9 @@ pre code {
   color: #222;
 }
 
-
+.scroll-hidden {
+  overflow: hidden !important;
+}
 
 
 /*--------------------------------*\

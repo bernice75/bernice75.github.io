@@ -33,8 +33,8 @@ nav_link_three_link: #NAV_LINK_GOES_HERE
 footer_link_one_name: #FOOTER_NAME_GOES_HERE
 footer_link_one_link: #FOOTER_LINK_GOES_HERE
 
-footer_link_two_name: Categories
-footer_link_two_link: "/categories"
+footer_link_two_name: Blog
+footer_link_two_link: "/blog"
 
 footer_link_three_name: #FOOTER_NAME_GOES_HERE
 footer_link_three_link: #FOOTER_LINK_GOES_HERE

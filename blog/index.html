@@ -4,7 +4,9 @@ title: Blog
 permalink: /blog/
 ---
 
-<div class="page-wrapper">
+{% assign sorted_categories = site.categories | sort %}
+
+<div class="page-wrapper" data-blog-page>
 	<div class="inner-wrapper" id="mini-about">
 		<nav id="blog-top-nav" class="blog-top-nav" role="navigation" aria-label="Blog navigation">
 			<a class="blog-top-nav__home" href="/home/" title="Home">Home</a>
@@ -19,13 +21,44 @@ permalink: /blog/
 	<hr>
 
 	<div class="inner-wrapper">
+		<div class="blog-entry-actions" aria-label="Category filters">
+			<a
+				class="tag-chip is-active"
+				href="{{ site.baseurl }}/blog/"
+				data-category-filter
+				data-category-value="all"
+			>
+				All
+			</a>
+			{% for category in sorted_categories %}
+				<a
+					class="tag-chip"
+					href="{{ site.baseurl }}/blog/?category={{ category[0] | uri_escape }}"
+					data-category-filter
+					data-category-value="{{ category[0] }}"
+				>
+					{{ category[0] }}
+					<span class="tag-chip__count">{{ category[1] | size }}</span>
+				</a>
+			{% endfor %}
+		</div>
+
+		<div class="category-results-meta" data-category-results-meta>
+			전체 글을 표시하는 중입니다.
+		</div>
+
 		<br>
-		{% for post in paginator.posts %}
-		<div class="post-preview">
+
+		{% for post in site.posts %}
+		<div
+			class="post-preview"
+			data-blog-post
+			data-post-categories="{% if post.categories %}{{ post.categories | join: '|' | downcase }}{% endif %}"
+		>
 			<div class="sm-1-col lg-onequarter-col pull-left">
 				{% if post.header-img %}
 				<a href="{{ post.url | prepend: site.baseurl }}" style="text-decoration:none;">
-					<img class="post-header-img" src="{{ site.baseurl }}/{{ post.header-img }}" alt="Simpol Theme">
+					<img class="post-header-img" src="{{ site.baseurl }}/{{ post.header-img }}" alt="{{ post.title }}">
 				</a>
 				{% endif %}
 			</div><!-- end .sm-1-col lg-onequarter-col pull-left -->
@@ -35,6 +68,20 @@ permalink: /blog/
 				</a>
 				{% if post.description %}
 				<h4>{{ post.description }}</h4>
+				{% endif %}
+				{% if post.categories and post.categories.size > 0 %}
+				<div class="post-meta-tags">
+					{% for item in post.categories %}
+					<a
+						class="tag-chip tag-chip--small"
+						href="{{ site.baseurl }}/blog/?category={{ item | uri_escape }}"
+						data-category-link
+						data-category-value="{{ item }}"
+					>
+						{{ item }}
+					</a>
+					{% endfor %}
+				</div>
 				{% endif %}
 				<div class="sm-1-col lg-2-col pull-left">
 					<p class="mono smaller">Published on {{ post.date | date: "%B %-d, %Y" }}
@@ -50,18 +97,97 @@ permalink: /blog/
 			</div><!-- end .sm-1-col lg-threequarter-col inline-block -->
 		</div><!-- end .post-preview -->
 		{% endfor %}
-
-		{% if paginator.total_pages > 1 %}
-		<div class="pager">
-			{% if paginator.previous_page %}
-			<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-				class="previous btn-primary">&larr; Newer Posts</a>
-			{% endif %}
-			{% if paginator.next_page %}
-			<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-				class="btn-primary">Older Posts &rarr;</a>
-			{% endif %}
-		</div><!-- end .pager -->
-		{% endif %}
 	</div><!-- end .inner-wrapper -->
 </div><!-- end .page-wrapper -->
+
+<script>
+	(function () {
+		var page = document.querySelector('[data-blog-page]');
+		if (!page) {
+			return;
+		}
+
+		var filters = Array.prototype.slice.call(page.querySelectorAll('[data-category-filter]'));
+		var inlineLinks = Array.prototype.slice.call(page.querySelectorAll('[data-category-link]'));
+		var posts = Array.prototype.slice.call(page.querySelectorAll('[data-blog-post]'));
+		var resultsMeta = page.querySelector('[data-category-results-meta]');
+		var params = new URLSearchParams(window.location.search);
+		var selectedCategory = params.get('category') || 'all';
+
+		function normalize(value) {
+			return (value || '').trim().toLowerCase();
+		}
+
+		function buildUrl(category) {
+			return category === 'all'
+				? '{{ site.baseurl }}/blog/'
+				: '{{ site.baseurl }}/blog/?category=' + encodeURIComponent(category);
+		}
+
+		function updateMeta(category, visibleCount) {
+			if (!resultsMeta) {
+				return;
+			}
+
+			if (category === 'all') {
+				resultsMeta.textContent = '전체 글을 표시하는 중입니다.';
+			} else if (visibleCount > 0) {
+				resultsMeta.textContent = '"' + category + '" 카테고리 글 ' + visibleCount + '개를 표시하는 중입니다.';
+			} else {
+				resultsMeta.textContent = '"' + category + '" 카테고리의 글이 아직 없습니다.';
+			}
+		}
+
+		function applyFilter(category) {
+			var normalizedCategory = normalize(category);
+			var isAll = !normalizedCategory || normalizedCategory === 'all';
+			var visibleCount = 0;
+
+			filters.forEach(function (filter) {
+				var isMatch = normalize(filter.getAttribute('data-category-value')) === (isAll ? 'all' : normalizedCategory);
+				filter.classList.toggle('is-active', isMatch);
+			});
+
+			posts.forEach(function (post) {
+				var categories = normalize(post.getAttribute('data-post-categories')).split('|').filter(Boolean);
+				var isVisible = isAll || categories.indexOf(normalizedCategory) !== -1;
+
+				post.hidden = !isVisible;
+				post.style.display = isVisible ? '' : 'none';
+
+				if (isVisible) {
+					visibleCount += 1;
+				}
+			});
+
+			updateMeta(isAll ? 'all' : category, visibleCount);
+		}
+
+		function handleCategoryNavigation(category) {
+			var nextCategory = category || 'all';
+			window.history.pushState({ category: nextCategory }, '', buildUrl(nextCategory));
+			applyFilter(nextCategory);
+		}
+
+		filters.forEach(function (filter) {
+			filter.addEventListener('click', function (event) {
+				event.preventDefault();
+				handleCategoryNavigation(filter.getAttribute('data-category-value') || 'all');
+			});
+		});
+
+		inlineLinks.forEach(function (link) {
+			link.addEventListener('click', function (event) {
+				event.preventDefault();
+				handleCategoryNavigation(link.getAttribute('data-category-value') || 'all');
+			});
+		});
+
+		window.addEventListener('popstate', function () {
+			var nextParams = new URLSearchParams(window.location.search);
+			applyFilter(nextParams.get('category') || 'all');
+		});
+
+		applyFilter(selectedCategory);
+	})();
+</script>

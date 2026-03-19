@@ -8,8 +8,22 @@ layout: default
   <a href="{{ site.baseurl }}/blog/">
     <button class="btn-primary">&larr; 목록으로</button>
   </a>
-	<p class="mono smaller">Published on {{ page.date | date: "%B %-d, %Y" }} By {{ page.author }} &mdash; <a href="{{ site.baseurl }}/categories">{{ page.categories }}</a>
+	<p class="mono smaller">
+    Published on {{ page.date | date: "%B %-d, %Y" }} By {{ page.author }}
 	</p>
+  {% if page.categories and page.categories.size > 0 %}
+    <div class="post-meta-tags" aria-label="Post categories">
+      {% for category in page.categories %}
+        <a
+          class="tag-chip"
+          href="{{ site.baseurl }}/blog/?category={{ category | uri_escape }}"
+          aria-label="Filter posts by {{ category }}"
+        >
+          {{ category }}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
 	<hr>
 
   <!-- Post Content -->

@@ -404,6 +404,22 @@ pre code {
   overflow: hidden !important;
 }
 
+.home-page h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid #222;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #111;
+  letter-spacing: -0.02em;
+}
+
+.home-page h3:first-of-type {
+  margin-top: 1.75rem;
+}
+
 
 /*--------------------------------*\
   #PAGE-DEFAULT
@@ -690,6 +706,27 @@ footer p {
 .post-header-img {
   max-width: 250px;
   max-height: 250px;
+}
+
+.page-wrapper > h1 {
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.24;
+  margin: 0 0 0.65rem;
+}
+
+.post-article h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 2.8rem 0 1rem;
+}
+
+.post-article h2 {
+  font-size: 1.32rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 2.4rem 0 0.9rem;
 }
 
 .social-sharing a {

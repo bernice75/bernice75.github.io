@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include head.html %}
-  <body>
+  <body{% if page.page_class %} class="{{ page.page_class }}"{% endif %}>
 
     {% include nav.html %}
 

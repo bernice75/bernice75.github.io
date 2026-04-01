@@ -2,6 +2,7 @@
 layout: page
 title: Home
 permalink: /home/
+page_class: home-page
 ---
 
 # Back-end Engineer | 김미림
@@ -32,6 +33,13 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 - **접근**: 주문 관리 시스템을 내재화하고 API를 구축했으며, 모바일 앱 도입을 포함한 현장 업무 전산화를 진행했습니다.
 - **결과**: 외부 의존도를 낮추고, 현장 업무 처리 리드타임을 약 60% 단축했습니다.
 
+**4. SSH 기반 사내 배포 프로세스 가시화 및 표준화**
+
+- **문제**: 수동 SSH/SFTP 배포 방식은 진행 상태와 실패 지점을 즉시 파악하기 어려워 운영 대응이 늦어지고, 배포 절차도 담당자 경험에 의존하고 있었습니다.
+- **접근**: SSH 기반 배포를 내부 서비스 형태로 정리하고, 배포 단계 상태값, 실시간 로그, 헬스체크 기반 완료 판정, 동시 배포 제어 구조를 설계했습니다.
+- **결과**: 배포 과정을 추적 가능한 운영 흐름으로 전환해 장애 원인 파악과 후속 조치 속도를 높이고, 배포 절차를 표준화했습니다.
+- [포스팅 보기]({% post_url 2026-03-31-ssh-deploy-visualization %})
+
 ### 기술 스택 (Tech Stack)
 
 **주력**
@@ -41,7 +49,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 : WebFlux, Netty, Flutter (Dart), React
 
 **관심 분야**
-: Event-Driven Architecture, 운영 안정성 개선, LLM/RAG 기반 기능 설계
+: Event-Driven Architecture, 운영 안정성 개선, LLM 기반 기능 설계
 
 ### 경력 (Experience)
 
@@ -51,6 +59,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 - 그룹웨어 및 파트너 관리 시스템 개선
 - 주문 관리 시스템 내재화 및 API 구축
 - 매출 동기화 서버 구조 개선 및 운영 안정화
+- SSH 기반 사내 배포 도구를 설계·구현하여 배포 상태 가시화, 실시간 로그 확인, 동시 배포 제어, 헬스체크 기반 검증 체계 구축
 - 현장 업무 전산화 및 모바일 앱 도입
 
 **프리랜서 (Freelancer)** | Backend Engineer | _2022.07 ~ 2023.07_

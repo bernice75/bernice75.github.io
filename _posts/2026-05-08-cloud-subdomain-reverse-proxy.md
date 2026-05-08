@@ -3,6 +3,7 @@ layout: post
 title: "클라우드 서버의 서비스들을 서브도메인으로 분리해보자"
 description: "firewalld 포트 포워딩에 가려져 있던 Apache 리버스 프록시 문제를 진단하고, 서브도메인 기반 L7 라우팅 구조로 정리한 과정을 기록합니다."
 date: 2026-05-08 15:00:00 +0900
+header-img: assets/img/posts/2026-05-08-cloud-subdomain-reverse-proxy/cover.png
 author: "김미림"
 
 categories:

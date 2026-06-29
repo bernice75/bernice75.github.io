@@ -11,6 +11,11 @@ page_class: home-page
 
 Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Netty 환경의 장애 분석과 이벤트 기반 리팩터링까지 맡으며 처리 흐름, 트랜잭션 경계, 리소스 관리 전략을 중심으로 문제를 해결하고 있습니다.
 
+<p class="about-actions">
+  <a class="btn-primary" href="/resume/">이력서 보기</a>
+  <a class="btn-primary" href="/portfolio/">포트폴리오 보기</a>
+</p>
+
 ### 대표 사례 (Selected Work)
 
 **1. 매출 동기화 Netty TCP 서버 안정화**
@@ -46,7 +51,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 : Java, Spring Boot 3.x, Spring Security, Spring Data JPA, MySQL
 
 **경험 확장 영역**
-: WebFlux, Netty, Flutter (Dart), React
+: WebFlux, Netty, Flutter(Dart), React
 
 **관심 분야**
 : Event-Driven Architecture, 운영 안정성 개선, LLM 기반 기능 설계

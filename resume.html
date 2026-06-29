@@ -1,0 +1,140 @@
+---
+layout: page
+title: Resume
+permalink: /resume/
+page_class: resume-page
+description: 김미림 백엔드 개발자 이력서
+---
+
+<article class="resume">
+  <div class="resume-actions" aria-label="Resume actions">
+    <a class="btn-primary" href="/home/">About</a>
+    <a class="btn-primary" href="/portfolio/">포트폴리오</a>
+    <button class="btn-primary" type="button" onclick="window.print()">PDF 저장/인쇄</button>
+  </div>
+
+  <header class="resume-header">
+    <h1>김미림 | 백엔드 개발자</h1>
+    <p class="resume-role">Backend Engineer</p>
+    <p class="resume-contact">
+      <!-- 
+      <span>{이곳에 전화번호}</span>
+      <span>{이곳에 이메일}</span>
+      -->
+      <span>경력 약 4년</span>
+    </p>
+    <p class="resume-lead">
+      운영 복잡도를 낮추고 데이터 정합성을 지키는 백엔드 개발자입니다. 결제, POS, 물류, 정산처럼 데이터 신뢰성이 중요한 도메인에서 시스템 안정성과 운영 효율을 개선해 왔습니다.
+    </p>
+  </header>
+
+  <section class="resume-section">
+    <h2>요약</h2>
+    <p>
+      Spring Event 기반 비동기 처리 도입으로 외부 API 응답 지연에 따른 사용자 대기 시간을 줄였고, WebFlux + Netty 기반 매출 동기화 서버의 DB 커넥션 풀 고갈 원인을 분석해 메시지 프레이밍 방식과 리액티브 구독 체인을 개선했습니다. 또한 배포 운영 통제 플랫폼과 레거시 키오스크 전환 프로젝트에서는 분석, 설계, 검증을 주도하고 구현을 AI에 위임해 시스템을 완성하는 협업 방식을 적용했습니다.
+    </p>
+  </section>
+
+  <section class="resume-section">
+    <h2>대표 성과</h2>
+    <ul class="resume-list">
+      <li><strong>배송 접수 지연 해소:</strong> Spring Event 기반 비동기 처리를 통해 택배사 API 응답 지연에 따른 사용자 대기 시간을 7초에서 150ms 이하로 단축</li>
+      <li><strong>동기화 서버 장애 안정화:</strong> WebFlux + Netty 기반 매출 동기화 서버의 DB 커넥션 풀 고갈 원인을 규명하고, 메시지 프레이밍 교체 및 리액티브 구독 체인 평탄화로 동일 원인 장애 0건 유지</li>
+      <li><strong>레거시 키오스크 전환:</strong> C# 기반 키오스크의 결제, 현금 모듈, 프린터 연동 흐름을 역분석하고, Electron + React + TypeScript 기반 Windows 앱 전환 구조와 하드웨어 모듈 경계를 설계 및 검증</li>
+      <li><strong>배포 운영 표준화:</strong> 수동 SSH 배포 절차를 상태 기반 배포 흐름으로 설계하고, Blue-Green 전환, RBAC, 감사 로그를 포함한 배포 운영 통제 플랫폼 구조 설계</li>
+      <li><strong>개발 생산성 향상:</strong> 그룹웨어 단일 엔드포인트를 도메인 기반 REST API로 개편하여 기능 변경 시 영향 범위를 66% 축소</li>
+      <li><strong>쿼리 최적화:</strong> 10여 개 테이블 조인 및 인덱스 전략 재설계로 쿼리 응답 시간을 3~5분에서 350ms로 개선</li>
+    </ul>
+  </section>
+
+  <section class="resume-section">
+    <h2>기술 역량</h2>
+    <dl class="resume-skills">
+      <dt>Backend & Architecture</dt>
+      <dd>Java, Spring Boot 3.x, Netty, WebFlux, R2DBC, Spring Event, Spring Data JPA, MyBatis, QueryDSL, Spring Security, JWT, 권한 모델링(ACL)</dd>
+      <dt>Database & Infra / Client</dt>
+      <dd>MySQL, MariaDB, Electron, React, TypeScript</dd>
+    </dl>
+  </section>
+
+  <section class="resume-section">
+    <h2>학력 및 자격</h2>
+    <ul class="resume-list">
+      <li><strong>학력:</strong> 컴퓨터공학 학사(학점은행제), 정보경영 전문학사(한양여자대학교)</li>
+      <li><strong>자격증:</strong> AWS CSAA, AWS DVA, AWS CCP, 정보처리기사, SQLD</li>
+    </ul>
+  </section>
+
+  <section class="resume-section">
+    <h2>경력</h2>
+    <div class="resume-entry">
+      <div class="resume-entry__header">
+        <h3>(주)한국밴서비스 | 연구개발부 백엔드 엔지니어</h3>
+        <span>2023.08 ~ 현재</span>
+      </div>
+      <p>오프라인 결제 단말기(POS/KIOSK) 프로그램 개발, VAN/PG 결제 솔루션</p>
+      <ul class="resume-list">
+        <li>결제, 물류, 주문, 정산 시스템 고도화 및 운영 효율화를 위한 레거시 리팩토링 주도</li>
+        <li>주문 관리 시스템(OMS) 비동기 아키텍처 고도화</li>
+        <li>WebFlux + Netty 기반 동기화 서버 장애 분석 및 최적화</li>
+        <li>DeployX(SSH 기반 배포 운영 통제 플랫폼) 및 Cyder Kiosk(Electron 전환) 프로젝트 설계 및 검증</li>
+      </ul>
+    </div>
+
+    <div class="resume-entry">
+      <div class="resume-entry__header">
+        <h3>프리랜서 | 백엔드 엔지니어</h3>
+        <span>2022.07 ~ 2023.07</span>
+      </div>
+      <p>공공기관 및 스타트업 서비스의 백엔드 설계/구현 및 쿼리 성능 최적화</p>
+      <ul class="resume-list">
+        <li>현대백화점 주머니 H.Point 통합 프로젝트 및 신용보증재단 모바일 앱 구축 사업 참여</li>
+        <li>그린자켓 앱 고도화 백엔드 설계 및 구현</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <h2>주요 프로젝트</h2>
+    <div class="resume-project">
+      <div class="resume-entry__header">
+        <h3>주문 관리 시스템(OMS) 비동기 아키텍처 고도화</h3>
+        <span>2023.08 ~ 현재</span>
+      </div>
+      <p class="resume-tech">Java, Spring Boot 3.x, Spring Event, JPA, QueryDSL, MySQL</p>
+      <p><strong>문제 상황:</strong> 외부 택배사 API의 응답 지연으로 인해 관리자 페이지 화면이 최장 7초간 멈추는 현상 발생</p>
+      <ul class="resume-list">
+        <li>트랜잭션 커밋 후 `@Async` 기반 외부 API 호출 리스너가 실행되도록 분리하여 대기 시간을 150ms 이하로 단축</li>
+        <li>UUID 기반 eventId를 발행하여 요청/응답 전문 로깅 및 실패 건 추적성 확보</li>
+        <li>실패 건 수기 재접수 상태 관리를 통해 외부 시스템과의 정합성 오류 최소화</li>
+      </ul>
+    </div>
+
+    <div class="resume-project">
+      <div class="resume-entry__header">
+        <h3>WebFlux + Netty 기반 동기화 서버 리소스 고갈 장애 분석</h3>
+        <span>2024.10 ~ 2026.01</span>
+      </div>
+      <p class="resume-tech">Java, Spring Boot 3.x, Netty, WebFlux, R2DBC, MariaDB</p>
+      <p><strong>문제 상황:</strong> POS/키오스크 매출 수신 서버에서 DB 커넥션 풀이 반복적으로 고갈되어 연관 시스템까지 동반 장애 발생</p>
+      <ul class="resume-list">
+        <li>JsonObjectDecoder 기반 객체 경계 프레이밍으로 교체하여 대용량 JSON 예외 문제 해결</li>
+        <li>중첩 subscribe 구조를 flatMap 기반 단일 체인으로 평탄화 및 예외 처리 표준화</li>
+        <li>인프라 장애와 앱 결함을 분리 모니터링하여 2026.01 이후 동일 원인 애플리케이션 장애 0건 유지</li>
+      </ul>
+    </div>
+
+    <div class="resume-project">
+      <div class="resume-entry__header">
+        <h3>DeployX: SSH 기반 배포 운영 통제 플랫폼</h3>
+        <span>2026.03 ~ 2026.06</span>
+      </div>
+      <p class="resume-tech">Node.js, React, SSH/SFTP, WebSocket, MySQL/PostgreSQL, Apache, systemd</p>
+      <ul class="resume-list">
+        <li>수동 흐름을 이력화 및 구조화하여 실패 단계와 원인을 UI와 로그에 일관되게 기록</li>
+        <li>Apache Reverse Proxy 환경에서 프록시 심링크 전환 및 롤백 흐름 정의</li>
+        <li>동시성 충돌, 로그 누락, 토큰 폐기 타이밍 등 운영 리스크 검토와 결과물 검증 주도</li>
+      </ul>
+    </div>
+  </section>
+</article>

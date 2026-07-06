@@ -1,0 +1,263 @@
+/* Resume page (/resume/) only. Loaded via page.extra_css in resume.html. */
+
+.resume-header {
+  margin: 0 0 2.4rem;
+}
+
+.resume-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.24;
+}
+
+.resume-role {
+  margin: 0 0 0.7rem;
+  color: #555;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  margin: 0 0 1.1rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.resume-contact span:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.7rem;
+  color: #c8c8c8;
+}
+
+.resume-lead {
+  max-width: 760px;
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.resume-section {
+  margin: 0 0 2.35rem;
+}
+
+.resume-section h2 {
+  margin: 0 0 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid #222;
+  color: #111;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.resume-section h3 {
+  margin: 0;
+  color: #222;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.resume-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.resume-list li {
+  margin-bottom: 0.6rem;
+  line-height: 1.75;
+}
+
+/* Education / certification tables: match the resume's own monochrome
+   divider style (h2 underline, .resume-project border) instead of the
+   generic GitHub-style article table (grey header fill, blue-grey borders). */
+.resume-education-table,
+.resume-cert-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.resume-education-table tr,
+.resume-cert-table tr {
+  white-space: normal;
+}
+
+.resume-education-table th,
+.resume-education-table td,
+.resume-cert-table th,
+.resume-cert-table td {
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  background-color: transparent;
+  color: #333;
+  word-break: keep-all;
+}
+
+.resume-education-table thead th,
+.resume-cert-table thead th {
+  border-bottom: 2px solid #222;
+  color: #111;
+  font-weight: 700;
+}
+
+.resume-education-table tbody tr:nth-child(even),
+.resume-cert-table tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.resume-education-table tbody tr:last-child td,
+.resume-cert-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.resume-education-table th:nth-child(3),
+.resume-education-table td:nth-child(3) {
+  width: 24%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.resume-cert-table th:nth-child(1),
+.resume-cert-table td:nth-child(1) {
+  width: 16%;
+}
+
+.resume-cert-table th:nth-child(2),
+.resume-cert-table td:nth-child(2) {
+  width: 42%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.resume-cert-table th:nth-child(3),
+.resume-cert-table td:nth-child(3) {
+  width: 26%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.resume-cert-table th:nth-child(4),
+.resume-cert-table td:nth-child(4) {
+  width: 16%;
+}
+
+.resume-entry,
+.resume-project {
+  margin: 0 0 1.65rem;
+}
+
+.resume-project {
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.resume-project:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.resume-entry__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.resume-entry__header span {
+  flex: 0 0 auto;
+  color: #666;
+  font-size: 0.92rem;
+}
+
+.resume-tech {
+  display: inline-block;
+  margin: 0.25rem 0 0.8rem;
+  color: #555;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.resume-skills {
+  margin: 0;
+}
+
+.resume-skills dt {
+  margin: 0.9rem 0 0.25rem;
+  color: #222;
+  font-weight: 700;
+}
+
+.resume-skills dt:first-child {
+  margin-top: 0;
+}
+
+.resume-skills dd {
+  margin: 0;
+  color: #333;
+  line-height: 1.75;
+}
+
+@media screen and (max-width: 767px) {
+  .resume-entry__header {
+    display: block;
+  }
+
+  .resume-entry__header span {
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  .resume-education-table,
+  .resume-cert-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media print {
+  .resume-header {
+    margin-bottom: 1.4rem;
+  }
+
+  .resume-header h1 {
+    font-size: 1.9rem;
+  }
+
+  .resume-section {
+    margin-bottom: 1.55rem;
+    break-inside: avoid;
+  }
+
+  .resume-section h2 {
+    font-size: 1.25rem;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .resume-section h3,
+  .resume-list li,
+  .resume-skills dd,
+  .resume-entry p,
+  .resume-project p {
+    font-size: 1rem;
+  }
+
+  .resume-project,
+  .resume-entry {
+    break-inside: avoid;
+  }
+}

@@ -115,13 +115,13 @@ description: 김미림 백엔드 개발자 이력서
         <h3>(주)한국밴서비스 | 연구개발부 백엔드 엔지니어</h3>
         <span>2023.08 ~ 현재</span>
       </div>
-      <p>오프라인 결제 단말기(POS/KIOSK) 프로그램 개발, VAN/PG 결제 솔루션</p>
+      <p>오프라인 결제 단말기(POS/KIOSK) 프로그램 개발 및 VAN/PG 결제 솔루션 운영</p>
       <ul class="resume-list">
-        <li>결제, 물류, 주문, 정산 시스템 고도화 및 운영 효율화를 위한 레거시 리팩토링 주도</li>
-        <li>주문 관리 시스템(OMS) 비동기 아키텍처 고도화</li>
-        <li>WebFlux + Netty 기반 동기화 서버 장애 분석 및 최적화</li>
-        <li>SSH 기반 배포 운영 통제 플랫폼(DeployX)을 자체 구축 및 운영 적용</li>
-        <li>레거시 C# 키오스크 Electron 전환</li>
+        <li>결제, 물류, 주문, 정산 시스템 고도화 및 운영 효율화를 위한 레거시 리팩토링 수행</li>
+        <li>주문 관리 시스템(OMS) 비동기 아키텍처 고도화 및 정합성 보장 로직 설계</li>
+        <li>WebFlux + Netty 기반 동기화 서버 장애 분석 및 리액티브 체인 최적화</li>
+        <li>SSH 기반 배포 운영 통제 플랫폼(DeployX)을 자체 구축하여 배포 안정성 확보</li>
+        <li>레거시 C# 키오스크 분석 및 Electron 기반 전환 설계 주도</li>
       </ul>
     </div>
 
@@ -130,10 +130,11 @@ description: 김미림 백엔드 개발자 이력서
         <h3>프리랜서 | 백엔드 엔지니어</h3>
         <span>2022.07 ~ 2023.07</span>
       </div>
-      <p>공공기관 및 스타트업 서비스의 백엔드 설계/구현 및 쿼리 성능 최적화</p>
+      <p>공공기관 및 스타트업 서비스의 백엔드 설계·구현 및 쿼리 성능 최적화 수행</p>
       <ul class="resume-list">
-        <li>현대백화점 주머니 H.Point 통합 프로젝트 및 신용보증재단 모바일 앱 구축 사업 참여</li>
-        <li>그린자켓 앱 고도화 백엔드 설계 및 구현 (쿼리 성능 개선 포함)</li>
+        <li>현대백화점 H.Point 통합 프로젝트 내 결제/적립 도메인 백엔드 API 설계 및 구현</li>
+        <li>그린자켓 앱 고도화 백엔드 설계 및 쿼리 실행 계획 분석을 통한 성능 개선</li>
+        <li>신용보증재단 모바일 앱 전환 프로젝트 내 레거시 DB 연동 및 대고객 API 성능 최적화</li>
       </ul>
     </div>
   </section>
@@ -164,13 +165,13 @@ description: 김미림 백엔드 개발자 이력서
       </div>
       <p class="resume-affiliation">소속: (주)한국밴서비스</p>
       <p class="resume-tech">Language: TypeScript / Framework: Electron / Library: React / Database: MySQL / 기타: SerialPort, electron-builder</p>
-      <p><strong>성과:</strong> 문서와 유지보수 경로가 남아 있지 않던 C# 레거시 키오스크를 분석해 Electron + React + TypeScript 기반 구조로 전환함으로써, 하드웨어 연동 모듈의 유지보수성과 배포 안정성을 확보함</p>
+      <p><strong>성과:</strong> 문서가 부재한 C# 레거시를 리버스 엔지니어링하여 현대적 웹 기술 스택으로 전환하고, 하드웨어 연동 모듈을 독립 프로세스로 격리하여 장애 전파를 차단함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
-        <li>C# 키오스크의 결제, 현금 모듈, 프린터, 상품 조회, 매장 인증 흐름 분석</li>
-        <li>VAN 결제·Serial 현금 모듈·ESC/POS 프린터 로직을 독립 모듈로 분리해 장애 전파 차단</li>
-        <li>하드웨어 설정, DB 접속 정보, 인증 정보를 외부 설정 파일과 환경 변수로 분리</li>
-        <li>Electron Builder 기반 Windows x64/ia32 설치 파일 패키징 및 릴리즈 구조 구성</li>
+        <li>VAN 결제(DLL/TCP)와 현금 모듈(Serial) 연동 계층을 독립 모듈화하고, 비동기 I/O 구조를 적용해 Electron UI 블로킹을 방지</li>
+        <li>지연 승인 수용 및 미확인 결제 추적·알림 체계를 구현하여 통신 장애 시 결제 데이터 유실 방지</li>
+        <li>하드웨어 설정 및 DB 접속 정보를 외부 설정 파일로 분리하여 운영 편의성 개선</li>
+        <li>Electron Builder 기반 x64·ia32 설치 패키징과 채널·아키텍처별 자동 업데이트 체계를 구축하여 현장 배포 리드타임 단축</li>
       </ul>
     </div>
 
@@ -181,13 +182,12 @@ description: 김미림 백엔드 개발자 이력서
       </div>
       <p class="resume-affiliation">소속: (주)한국밴서비스</p>
       <p class="resume-tech">Language: Node.js / Library: React / Database: MySQL, PostgreSQL / 기타: SSH/SFTP, WebSocket, Apache, systemd</p>
-      <p><strong>성과:</strong> 수동 SSH 배포 절차를 상태 기반 배포 흐름으로 재구성함으로써, Blue-Green 무중단 전환과 RBAC·감사 로그를 포함한 배포 운영 통제 체계를 구축함</p>
+      <p><strong>성과:</strong> 수동 배포 절차를 상태 기반 흐름으로 자동화하여 Blue-Green 무중단 전환과 감사 로그를 포함한 배포 통제 체계를 구축함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
-        <li>Apache Reverse Proxy 환경에서 프록시 심링크 전환 기반 Blue-Green 배포 설계 및 구현</li>
-        <li>배포 상태·실패 단계·원인을 이력화해 UI와 로그에 일관되게 기록하는 구조 설계</li>
-        <li>RBAC 기반 권한 분리와 배포 이력 감사 로그 설계</li>
-        <li>CI 연동 토큰 즉시 폐기 구조 설계, 동시성 충돌 등 운영 리스크 사전 검토</li>
+        <li>Apache Reverse Proxy 환경에서 심링크 전환 기반 Blue-Green 배포 설계 및 구현</li>
+        <li>배포 단계별 상태 및 원인을 이력화하여 가시성을 확보하고 RBAC 기반 권한 분리 설계</li>
+        <li>CI 연동 토큰 즉시 폐기 및 동시 배포 충돌 방지 로직 구현으로 운영 리스크 제거</li>
       </ul>
     </div>
 
@@ -198,12 +198,12 @@ description: 김미림 백엔드 개발자 이력서
       </div>
       <p class="resume-affiliation">소속: (주)한국밴서비스</p>
       <p class="resume-tech">Language: Java / Framework: Spring Boot, Spring Event, JPA, QueryDSL / Database: MySQL</p>
-      <p><strong>성과:</strong> 트랜잭션 커밋 후 비동기 이벤트 리스너로 외부 API 호출을 분리함으로써, 관리자 화면 대기 시간을 7초에서 150~200ms로 단축함</p>
+      <p><strong>성과:</strong> 트랜잭션 커밋 후 비동기 이벤트 리스너로 외부 API 호출을 분리하여 관리자 화면 대기 시간을 7초에서 150~200ms로 단축함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
-        <li>@Async 기반 외부 API 호출 리스너 분리 구현</li>
-        <li>UUID 기반 eventId 발행 및 요청/응답 전문 로깅 구조 설계</li>
-        <li>실패 건 수기 재접수 상태 관리 프로세스 정립</li>
+        <li>@Async 및 TransactionalEventListener를 적용해 DB 커밋 이후 외부 API 처리를 비동기로 수행하도록 설계하여 요청 응답성을 개선하고 롤백 데이터의 후속 처리 방지</li>
+        <li>외부 API 연동 로그를 구조화하고, requestId와 MDC 기반으로 비동기 처리 구간의 오류 추적성 강화</li>
+        <li>UUID 기반 requestId를 요청 데이터·이벤트·처리 결과·MDC 로그에 전파하여 비동기 처리 흐름과 부분 실패를 추적하는 구조 설계</li>
       </ul>
     </div>
 
@@ -217,9 +217,9 @@ description: 김미림 백엔드 개발자 이력서
       <p><strong>성과:</strong> 매출 동기화 서버의 DB 커넥션 풀 고갈 원인을 규명하고 메시지 프레이밍과 리액티브 체인을 개선함으로써, 개선 작업 이후 재발 0건으로 마감함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
-        <li>JsonObjectDecoder 기반 객체 경계 프레이밍으로 교체해 대용량 JSON 예외 해결</li>
-        <li>중첩 subscribe 구조를 flatMap 기반 단일 체인으로 평탄화</li>
-        <li>커넥션 점유 개수 로깅으로 장애 원인 추적, 인프라 장애와 애플리케이션 결함 분리 모니터링</li>
+        <li>JsonObjectDecoder 기반 객체 경계 프레이밍으로 교체해 대용량 데이터 처리 시 예외 해결</li>
+        <li>중첩 subscribe 구조를 flatMap 기반 단일 체인으로 평탄화하여 스레드 차단(Blocking) 지점 해소</li>
+        <li>커넥션 점유 개수 로깅으로 장애 원인 추적, 인프라 장애와 애플리케이션 결함을 분리해 모니터링</li>
       </ul>
     </div>
 
@@ -230,13 +230,12 @@ description: 김미림 백엔드 개발자 이력서
       </div>
       <p class="resume-affiliation">소속: (주)한국밴서비스</p>
       <p class="resume-tech">Language: Java / Framework: Spring Boot, Spring Security, MyBatis / Database: MariaDB / 기타: JWT</p>
-      <p><strong>성과:</strong> 단일 엔드포인트 중심 구조를 도메인 기반 REST API로 전환함으로써, 기능 변경 시 영향 범위를 66% 축소함</p>
+      <p><strong>성과:</strong> 단일 진입점(Controller)을 도메인 기반 REST API로 재설계하여 계층 간 의존성을 약화시키고 기능 변경 시 영향 범위를 66% 축소함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
-        <li>단일 엔드포인트를 도메인 단위 REST API로 점진적 전환</li>
-        <li>세션 확인 로직과 요청 시 갱신 방식 적용, 이후 JWT 기반 인증으로 확장</li>
-        <li>첨부파일 처리를 트랜잭션 기반 갱신 구조로 변경</li>
-        <li>엑셀 생성 로직 일부를 클라이언트로 이전</li>
+        <li>도메인 단위 API 점진적 전환을 통해 기능 수정 시 연관 모듈 수정 범위 경량화</li>
+        <li>JWT 기반 인증 체계 도입 및 요청 시 세션 갱신 로직을 적용하여 보안성 강화</li>
+        <li>파일 처리를 트랜잭션 기반 갱신 구조로 변경하고 엑셀 생성 부하를 클라이언트로 분산</li>
       </ul>
     </div>
 
@@ -249,7 +248,7 @@ description: 김미림 백엔드 개발자 이력서
       <p><strong>역할</strong></p>
       <ul class="resume-list">
         <li>OMS, WebFlux 동기화 서버, DeployX, 그룹웨어 상시 모니터링 및 유지보수</li>
-        <li>장애 발생 시 원인 분석 및 대응, 재발 방지 조치 적용</li>
+        <li>장애 발생 시 원인 분석 및 재발 방지 조치 적용</li>
       </ul>
     </div>
 
@@ -260,12 +259,12 @@ description: 김미림 백엔드 개발자 이력서
       </div>
       <p class="resume-affiliation">소속: (주)한국밴서비스</p>
       <p class="resume-tech">Language: Java / Framework: Spring Boot, JPA, QueryDSL, Spring Security / Database: MySQL</p>
-      <p><strong>성과:</strong> 주문 접수부터 재고 관리, 정산까지 이어지는 운영 흐름을 주문 사이트와 관리 사이트 이중 구조로 구축함</p>
+      <p><strong>성과:</strong> 주문 접수부터 재고 관리, 정산까지의 운영 흐름을 구축하고 DB 락 설계를 통해 데이터 무결성을 확보함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
         <li>주문 접수, 배송지 관리, 기간별 사용 현황, 예치금 충전 기능을 포함한 주문 사이트 구축</li>
-        <li>주문 관리(외부 택배사 API 연동), 상품·재고 관리, 월 매출·재고 정산, 거래명세서 발급 기능을 포함한 관리 사이트 구축</li>
-        <li>예치금 충전 요청·반품 접수와 관리 사이트 승인을 SSE로 실시간 연동</li>
+        <li>DB 비관적 락(Pessimistic Lock)을 적용하여 동시 주문 상황에서도 재고 마이너스 발생 방지</li>
+        <li>예치금 충전 및 반품 접수 흐름을 SSE로 실시간 연동하여 관리 효율성 개선</li>
         <li>자체 생산 상품과 창고 임대 보관 상품의 재고를 분리 관리하는 구조 설계</li>
       </ul>
     </div>
@@ -277,12 +276,12 @@ description: 김미림 백엔드 개발자 이력서
       </div>
       <p class="resume-affiliation">소속: 프리랜서</p>
       <p class="resume-tech">Language: Java / Framework: Spring Security / Database: RDBMS(SQL)</p>
-      <p><strong>성과:</strong> 과도한 UNION/JOIN 통합 쿼리를 서비스 단위로 재설계함으로써, 3~5분 걸리던 조회 응답을 350ms 수준으로 단축함</p>
+      <p><strong>성과:</strong> EXPLAIN 분석을 통해 Full Table Scan 요인을 제거하고 쿼리를 최적화하여 3~5분 걸리던 조회 응답을 350ms 수준으로 99% 이상 단축함</p>
       <p><strong>역할</strong></p>
       <ul class="resume-list">
-        <li>통합 쿼리를 서비스 단위로 분리하고 비즈니스 레이어에서 결과 재조립</li>
-        <li>로그인, 회원가입, 마이페이지 등 핵심 기능 로직 재구성 및 중복 코드 제거</li>
-        <li>Spring Security 기본 remember-me 설정 기준선 확보 후 필요한 설정만 재적용</li>
+        <li>통합 쿼리를 서비스 단위로 분리하고 애플리케이션 레이어에서 결과 재조립</li>
+        <li>복합 인덱스 전략 수립 및 불필요한 서브쿼리 제거로 DB 부하 감소</li>
+        <li>Spring Security 기반 인증 로직 재구성 및 핵심 기능 중복 코드 리팩토링</li>
       </ul>
     </div>
   </section>

@@ -1,20 +1,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Backup, in lieu of jekyll-seo gem -->
-	<title>{{ page.title }} | {{ site.title }}</title>
-	<meta name="description" content="{{ page.description }}">
-	<meta name="robots" content="index, follow">
-	<!-- End SEO backup -->
 
 	<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 	{% if page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ page.extra_css }}">{% endif %}
-	<link rel="canonical" href="{{ site.baseurl }}{{ page.url }}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/img/favicon.png">
 	<link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicon.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicon.png" sizes="16x16">
 
+	<!-- title/description/canonical/OG/JSON-LD 생성. 직접 추가하면 중복됩니다. -->
 	{% seo %}
 	{% feed_meta %}
 </head>

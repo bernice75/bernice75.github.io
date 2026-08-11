@@ -64,6 +64,23 @@
   --color-border-strong: #8c959f;
   --color-rule: #dedede;
 
+  /* Syntax highlighting */
+  --code-text: #24292f;
+  /* #6e7781 (GitHub's own) only reaches 4.27:1 on the code background */
+  --code-comment: #6b7280;
+  --code-keyword: #cf222e;
+  --code-string: #0a3069;
+  --code-number: #0550ae;
+  --code-function: #8250df;
+  --code-class: #953800;
+  --code-attribute: #0550ae;
+  --code-constant: #0550ae;
+  --code-tag: #116329;
+  --code-error: #cf222e;
+  --code-diff-add-text: #116329;
+  --code-diff-add-bg: #dafbe1;
+  --code-diff-del-text: #82071e;
+  --code-diff-del-bg: #ffebe9;
 
   /* Overlay (image lightbox) */
   --color-backdrop: rgba(15, 23, 42, 0.8);
@@ -92,6 +109,61 @@
   --font-typewriter: "Lucida Sans Typewriter", "Lucida Console", monaco, monospace;
   --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Pretendard", sans-serif;
 }
+
+/* Dark palette. Scoped to `screen` on purpose -- printing must always use the
+   light tokens above, otherwise light grey body text prints onto white paper. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0d1117;
+    --color-surface: #161b22;
+    --color-surface-subtle: #161b22;
+    --color-surface-active: #1f2937;
+    --color-surface-badge: #21262d;
+    --color-surface-zebra: #11161d;
+
+    --color-text-strongest: #f0f6fc;
+    --color-text-heading: #e6edf3;
+    --color-text: #c9d1d9;
+    --color-text-muted: #a8b3c1;
+    --color-text-subtle: #8b949e;
+    --color-text-inverse: #ffffff;
+
+    --color-link: #a8b3c1;
+    --color-link-hover: #e6edf3;
+
+    --color-border: #30363d;
+    --color-border-subtle: #21262d;
+    --color-border-strong: #6e7681;
+    --color-rule: #30363d;
+
+    --code-text: #e6edf3;
+    --code-comment: #8b949e;
+    --code-keyword: #ff7b72;
+    --code-string: #a5d6ff;
+    --code-number: #79c0ff;
+    --code-function: #d2a8ff;
+    --code-class: #ffa657;
+    --code-attribute: #79c0ff;
+    --code-constant: #79c0ff;
+    --code-tag: #7ee787;
+    --code-error: #ff7b72;
+    --code-diff-add-text: #7ee787;
+    --code-diff-add-bg: #033a16;
+    --code-diff-del-text: #ffa198;
+    --code-diff-del-bg: #67060c;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Bright diagram screenshots glare against a dark page. */
+  article img {
+    filter: brightness(0.92);
+  }
+}
+
 
 /*--------------------------------*\
   #NORMALIZING
@@ -366,13 +438,118 @@ pre code {
   line-height: inherit;
 }
 
-/* Rouge syntax highlighting: comments only */
+/* Rouge syntax highlighting. Token colours come from --code-* tokens so the
+   dark palette only has to redefine those, not this mapping. */
 .highlight .c,
+.highlight .ch,
+.highlight .cd,
 .highlight .cm,
-.highlight .c1 {
-  color: var(--color-text-subtle);
+.highlight .cp,
+.highlight .cpf,
+.highlight .c1,
+.highlight .cs {
+  color: var(--code-comment);
   font-style: italic;
-  opacity: 0.95;
+}
+
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kv,
+.highlight .ow,
+.highlight .nd {
+  color: var(--code-keyword);
+}
+
+.highlight .kt,
+.highlight .nc,
+.highlight .nn,
+.highlight .ne,
+.highlight .bp {
+  color: var(--code-class);
+}
+
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss {
+  color: var(--code-string);
+}
+
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+  color: var(--code-number);
+}
+
+.highlight .nf,
+.highlight .fm {
+  color: var(--code-function);
+}
+
+.highlight .na,
+.highlight .nl,
+.highlight .py {
+  color: var(--code-attribute);
+}
+
+.highlight .nt {
+  color: var(--code-tag);
+}
+
+.highlight .no,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .nb {
+  color: var(--code-constant);
+}
+
+.highlight .n,
+.highlight .o,
+.highlight .p,
+.highlight .nx {
+  color: var(--code-text);
+}
+
+.highlight .err {
+  color: var(--code-error);
+}
+
+.highlight .gd {
+  color: var(--code-diff-del-text);
+  background-color: var(--code-diff-del-bg);
+}
+
+.highlight .gi {
+  color: var(--code-diff-add-text);
+  background-color: var(--code-diff-add-bg);
+}
+
+.highlight .ge {
+  font-style: italic;
+}
+
+.highlight .gs {
+  font-weight: 700;
 }
 
 .mono {

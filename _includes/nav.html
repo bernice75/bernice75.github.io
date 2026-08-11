@@ -1,11 +1,24 @@
-<nav class="scroll-hidden">
-	<a href="{{ site.baseurl }}/home/">
+{%- comment -%} 링크 목록의 유일한 출처는 _config.yml 의 nav_links 입니다. {%- endcomment -%}
+<nav class="site-nav" aria-label="사이트 내비게이션">
+	<a class="site-nav__brand" href="{{ site.baseurl }}/home/">
 		<h1>{{ site.title | default: site.github.repository_name }}</h1>
 	</a>
-	<p>{{ site.subtitle | default: site.github.project_tagline }}</p>
-	{% if site.nav_links.size > 0 %}
-	<p class="smaller mobile-hide">
-		{% for link in site.nav_links %}{% unless forloop.first %} &bull; {% endunless %}<a href="{{ link.url | prepend: site.baseurl }}">{{ link.name }}</a>{% endfor %}
-	</p>
-	{% endif %}
+	<p class="site-nav__tagline">{{ site.subtitle | default: site.github.project_tagline }}</p>
+	{%- if site.nav_links.size > 0 %}
+	<ul class="site-nav__links">
+		{%- for link in site.nav_links %}
+		{%- assign target = link.url | prepend: site.baseurl %}
+		{%- assign is_current = false %}
+		{%- if page.url == target %}
+			{%- assign is_current = true %}
+		{%- elsif link.match_layout and page.layout == link.match_layout %}
+			{%- assign is_current = true %}
+		{%- endif %}
+		<li class="site-nav__item">
+			<a class="site-nav__link{% if is_current %} is-current{% endif %}"
+			   href="{{ target }}"{% if is_current %} aria-current="page"{% endif %}>{{ link.name }}</a>
+		</li>
+		{%- endfor %}
+	</ul>
+	{%- endif %}
 </nav>

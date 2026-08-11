@@ -20,11 +20,15 @@ social:
     - https://github.com/bernice75
 
 # 전역 내비게이션 링크의 유일한 출처. 페이지별로 이동 링크를 따로 두지 말 것.
+# match_layout: 해당 레이아웃 페이지에서도 '현재 위치'로 표시 (포스트 상세 → Blog)
 nav_links:
   - name: Home
     url: /home/
   - name: Blog
     url: /blog/
+    match_layout: post
+  - name: Resume
+    url: /resume/
   - name: Portfolio
     url: /portfolio/
 

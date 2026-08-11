@@ -1,18 +1,24 @@
-<nav class="scroll-hidden">
-	<a href="{{ site.baseurl }}/home/">
-		<h1>{% if site.title %}{{ site.title }}{% else %}{{ site.title | default: site.github.repository_name }}{% endif %}
-		</h1>
+{%- comment -%} 링크 목록의 유일한 출처는 _config.yml 의 nav_links 입니다. {%- endcomment -%}
+<nav class="site-nav" aria-label="사이트 내비게이션">
+	<a class="site-nav__brand" href="{{ site.baseurl }}/home/">
+		<h1>{{ site.title | default: site.github.repository_name }}</h1>
 	</a>
-	<p>{% if site.subtitle %}{{ site.subtitle }}{% else %}{{ site.subtitle | default: site.github.project_tagline }}{% endif %}
-	</p>
-	<p class="smaller mobile-hide">
-		{% if site.nav_link_one_link %}<a href="{{ site.nav_link_one_link }}">{% else %}<a href="{{ "https://github.com/scottmathson/simpol-theme#readme" }}">{% endif %}
-		{% if site.nav_link_one_name %}{{ site.nav_link_one_name }}</a>{% else %}{{ "Setup in _config.yml" }}</a>{% endif %}
-		&bull;
-		{% if site.nav_link_two_link %}<a href="{{ site.nav_link_two_link }}">{% else %}<a href="{{ "#" }}">{% endif %}
-		{% if site.nav_link_two_name %}{{ site.nav_link_two_name }}</a>{% else %}{{ "x" }}</a>{% endif %}
-		&bull;
-		{% if site.nav_link_three_link %}<a href="{{ site.nav_link_three_link }}">{% else %}<a href="{{ "#" }}">{% endif %}
-		{% if site.nav_link_three_name %}{{ site.nav_link_three_name }}</a>{% else %}{{ "x" }}</a>{% endif %}
-	</p>
+	<p class="site-nav__tagline">{{ site.subtitle | default: site.github.project_tagline }}</p>
+	{%- if site.nav_links.size > 0 %}
+	<ul class="site-nav__links">
+		{%- for link in site.nav_links %}
+		{%- assign target = link.url | prepend: site.baseurl %}
+		{%- assign is_current = false %}
+		{%- if page.url == target %}
+			{%- assign is_current = true %}
+		{%- elsif link.match_layout and page.layout == link.match_layout %}
+			{%- assign is_current = true %}
+		{%- endif %}
+		<li class="site-nav__item">
+			<a class="site-nav__link{% if is_current %} is-current{% endif %}"
+			   href="{{ target }}"{% if is_current %} aria-current="page"{% endif %}>{{ link.name }}</a>
+		</li>
+		{%- endfor %}
+	</ul>
+	{%- endif %}
 </nav>

@@ -127,7 +127,7 @@ Stephen Cleary의 FAQ를 읽고 나서, 프레이밍 문제를 고려하지 못�
 
 당시 `LineBasedFrameDecoder`, `LengthFieldBasedFrameDecoder`, `JsonObjectDecoder`를 어떤 기준으로 검토하고 적용했는지는 이전 포스팅에 조금 더 자세히 정리해두었습니다.<br>
 
-- [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({{ site.baseurl }}/blog/config-tcp-server-refactoring/)
+- [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({% post_url 2026-03-05-config-tcp-server-refactoring %})
 
 <br>
 
@@ -175,4 +175,4 @@ FAQ에서 특히 좋았던 부분은 보안성까지 함께 언급한다는 점�
 - Stephen Cleary, [TCP/IP .NET Sockets FAQ](https://blog.stephencleary.com/2009/04/tcpip-net-sockets-faq.html)
 - Stephen Cleary, [Message Framing](https://blog.stephencleary.com/2009/04/message-framing.html)
 - Stephen Cleary, [Sample code: Length-prefix message framing for streams](https://blog.stephencleary.com/2009/04/sample-code-length-prefix-message.html)
-- [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({{ site.baseurl }}/blog/config-tcp-server-refactoring/)
+- [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({% post_url 2026-03-05-config-tcp-server-refactoring %})

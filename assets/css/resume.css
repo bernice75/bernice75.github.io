@@ -13,31 +13,9 @@
 
 .resume-role {
   margin: 0 0 0.7rem;
-  color: #555;
+  color: var(--color-text-muted);
   font-size: 1rem;
   font-weight: 600;
-}
-
-.resume-contact {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.7rem;
-  margin: 0 0 1.1rem;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.resume-contact span:not(:last-child)::after {
-  content: "/";
-  margin-left: 0.7rem;
-  color: #c8c8c8;
-}
-
-.resume-lead {
-  max-width: 760px;
-  margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.8;
 }
 
 .resume-section {
@@ -47,8 +25,8 @@
 .resume-section h2 {
   margin: 0 0 1rem;
   padding-bottom: 0.45rem;
-  border-bottom: 2px solid #222;
-  color: #111;
+  border-bottom: 2px solid var(--color-text-heading);
+  color: var(--color-text-strongest);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -57,7 +35,7 @@
 
 .resume-section h3 {
   margin: 0;
-  color: #222;
+  color: var(--color-text-heading);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.55;
@@ -96,19 +74,19 @@
 .resume-cert-table th,
 .resume-cert-table td {
   border: none;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--color-border-subtle);
   padding: 0.65rem 0.75rem;
   text-align: left;
   vertical-align: top;
   background-color: transparent;
-  color: #333;
+  color: var(--color-text);
   word-break: keep-all;
 }
 
 .resume-education-table thead th,
 .resume-cert-table thead th {
-  border-bottom: 2px solid #222;
-  color: #111;
+  border-bottom: 2px solid var(--color-text-heading);
+  color: var(--color-text-strongest);
   font-weight: 700;
 }
 
@@ -160,7 +138,7 @@
 
 .resume-project {
   padding-bottom: 1.35rem;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .resume-project:last-child {
@@ -178,14 +156,14 @@
 
 .resume-entry__header span {
   flex: 0 0 auto;
-  color: #666;
+  color: var(--color-text-subtle);
   font-size: 0.92rem;
 }
 
 .resume-tech {
   display: inline-block;
   margin: 0.25rem 0 0.8rem;
-  color: #555;
+  color: var(--color-text-muted);
   font-size: 0.92rem;
   font-weight: 600;
 }
@@ -196,7 +174,7 @@
 
 .resume-skills dt {
   margin: 0.9rem 0 0.25rem;
-  color: #222;
+  color: var(--color-text-heading);
   font-weight: 700;
 }
 
@@ -206,7 +184,7 @@
 
 .resume-skills dd {
   margin: 0;
-  color: #333;
+  color: var(--color-text);
   line-height: 1.75;
 }
 

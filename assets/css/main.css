@@ -1,4 +1,5 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+/* Pretendard is loaded via <link> in _includes/head.html, not @import --
+   an @import here can only start downloading after this file is parsed. */
 
 /* Simpol Theme - Download at: https://github.com/simpol-theme/simpol-theme-jekyll/releases
 	 Coded by & Copyright © reserved by Mathson Design, LLC and Scott Mathson
@@ -246,7 +247,8 @@ hr {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 article img.lightbox-enabled-image {
@@ -556,14 +558,6 @@ pre code {
   font-family: var(--font-typewriter);
 }
 
-.pull-left {
-  float: left;
-}
-
-.pull-right {
-  float: right;
-}
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -604,7 +598,7 @@ pre code {
   outline-offset: 2px;
 }
 
-.home-page h3 {
+.home-page h2 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.45rem;
@@ -616,7 +610,7 @@ pre code {
   letter-spacing: -0.02em;
 }
 
-.home-page h3:first-of-type {
+.home-page h2:first-of-type {
   margin-top: 1.75rem;
 }
 
@@ -769,7 +763,6 @@ pre code {
   float: none;
   text-align: center;
   padding: 0;
-  top: 95vh;
   width: 100%;
 }
 
@@ -788,15 +781,6 @@ pre code {
 .main {
   padding: 2.5%;
   margin: 4%;
-}
-
-.sm-1-col {
-  width: 100%;
-}
-
-.post-cta {
-  float: none;
-  width: 30%;
 }
 
 .page-wrapper {
@@ -823,15 +807,67 @@ pre code {
 /*--------------------------------*\
   #POST-DEFAULT
 \*--------------------------------*/
-.post-preview {
-  border-bottom: 0.5px solid var(--color-rule);
-  padding: 2.5% 0 2.5% 0;
+/* Blog index cards. Thumbnails are cropped to a fixed ratio so the list
+   reads as one column of cards instead of a ragged stack. */
+.post-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.9rem 0;
+  border-bottom: 1px solid var(--color-rule);
 }
 
-.post-preview:after {
-  content: "";
-  display: table;
-  clear: both;
+.post-card:last-child {
+  border-bottom: 0;
+}
+
+.post-card__thumb {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-subtle);
+}
+
+.post-card__thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.post-card__title {
+  margin: 0 0 0.45rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.post-card__title a {
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.post-card__title a:hover,
+.post-card__title a:focus {
+  text-decoration: underline;
+}
+
+.post-card__desc {
+  margin: 0 0 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.post-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.post-card__meta p {
+  margin: 0;
 }
 
 .pager {
@@ -844,11 +880,6 @@ pre code {
 
 .pager button {
   margin: 0 auto;
-}
-
-.post-header-img {
-  max-width: 250px;
-  max-height: 250px;
 }
 
 .page-wrapper > h1 {
@@ -935,7 +966,6 @@ pre code {
   font-weight: 700;
 }
 
-.category-page__description,
 .category-results-meta {
   color: var(--color-text-muted);
 }
@@ -1083,16 +1113,8 @@ pre code {
   #MISC
 \*--------------------------------*/
 
-.hidden {
-  display: none;
-}
-
 .inline-block {
   display: inline-block;
-}
-
-.flex {
-  display: flex;
 }
 
 .scroll-to-top {
@@ -1137,24 +1159,14 @@ pre code {
   #RESPONSIVE
 \*--------------------------------*/
 @media (min-width: 768px) {
-  .md-2-col {
-    width: 48%;
+  .post-card {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
   }
 
-  .lg-onequarter-col {
-    width: 48%;
-  }
-
-  .lg-threequarter-col {
-    width: 48%;
-  }
-
-  .post-header-img {
-    padding-top: 10%;
-  }
-
-  .post-cta {
-    float: right;
+  .post-card--no-thumb {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1188,12 +1200,15 @@ pre code {
     font-size: 0.95em;
   }
 
+  /* Anchored to the viewport bottom rather than top:88vh, which drifted on
+     short viewports and could collide with the nav above it. */
   .site-footer {
     float: left;
     position: fixed;
-    top: 88vh;
-    padding: 2.5%;
-    width: auto;
+    bottom: 1.5rem;
+    left: 0;
+    padding: 0 2.5em;
+    width: 18%;
   }
 
   #mini-about {
@@ -1208,23 +1223,6 @@ pre code {
 
 
 
-
-  .lg-2-col {
-    width: 48%;
-  }
-
-  .lg-onequarter-col {
-    width: 20%;
-  }
-
-  .lg-threequarter-col {
-    margin-left: 2.8%;
-    width: 75%;
-  }
-
-  .post-cta {
-    width: 40%;
-  }
 
   .post-layout {
     display: grid;
@@ -1287,7 +1285,8 @@ pre code {
     font-size: 0.88rem;
   }
 
-  article img,
+  /* Narrow screens: let the sized helpers span the column. Bare `article img`
+     is left alone so small diagrams/icons keep their natural size. */
   article .img-90,
   article .img-80,
   article .img-70,
@@ -1297,7 +1296,6 @@ pre code {
   article .img-10,
   article .img-5 {
     width: 100%;
-    max-width: 100%;
   }
 
   .post-toc {

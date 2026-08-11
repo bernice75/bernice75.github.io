@@ -16,7 +16,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
   <a class="btn-primary" href="/portfolio/">포트폴리오 보기</a>
 </p>
 
-### 대표 사례 (Selected Work)
+## 대표 사례 (Selected Work)
 
 **1. 매출 동기화 Netty TCP 서버 안정화**
 
@@ -45,7 +45,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 - **결과**: 배포 과정을 추적 가능한 운영 흐름으로 전환해 장애 원인 파악과 후속 조치 속도를 높이고, 배포 절차를 표준화했습니다.
 - [포스팅 보기]({% post_url 2026-03-31-ssh-deploy-visualization %})
 
-### 기술 스택 (Tech Stack)
+## 기술 스택 (Tech Stack)
 
 **주력**
 : Java, Spring Boot 3.x, Spring Security, Spring Data JPA, MySQL
@@ -56,7 +56,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 **관심 분야**
 : Event-Driven Architecture, 운영 안정성 개선, LLM 기반 기능 설계
 
-### 경력 (Experience)
+## 경력 (Experience)
 
 **(주)한국밴서비스 (Korea VAN Service)** | Backend Engineer | _2023.08 ~ 현재_
 : 결제, 물류, 정산 시스템의 DX와 레거시 개선을 담당하며, 운영 이슈 해결과 내부 시스템 고도화를 주도했습니다.
@@ -74,7 +74,7 @@ Java/Spring 기반 서비스를 주로 개발해 왔고, 최근에는 WebFlux/Ne
 - 그린자켓 앱 고도화
 - 신용보증재단 모바일 앱 구축
 
-### 자격증 (Certifications)
+## 자격증 (Certifications)
 
 - AWS Certified Solutions Architect - Associate (SAA)
 - AWS Certified Developer - Associate (DVA)

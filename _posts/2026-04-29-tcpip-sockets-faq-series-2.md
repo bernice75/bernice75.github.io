@@ -200,4 +200,4 @@ timeout은 half-open 가능성을 애플리케이션이 어느 지점에서 끊�
 
 - Stephen Cleary, [TCP/IP .NET Sockets FAQ](https://blog.stephencleary.com/2009/04/tcpip-net-sockets-faq.html)
 - Stephen Cleary, [Detection of Half-Open (Dropped) Connections](https://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html)
-- [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({{ site.baseurl }}/blog/config-tcp-server-refactoring/)
+- [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({% post_url 2026-03-05-config-tcp-server-refactoring %})

@@ -6,7 +6,7 @@ permalink: /blog/
 
 {% assign sorted_categories = site.categories | sort %}
 
-<div class="page-wrapper" data-blog-page>
+<div class="page-wrapper" data-blog-page data-blog-base="{{ site.baseurl }}/blog/">
 	<h1>{{ page.title }}</h1>
 
 	<hr>
@@ -38,28 +38,27 @@ permalink: /blog/
 			전체 글을 표시하는 중입니다.
 		</div>
 
-		<br>
-
 		{% for post in site.posts %}
-		<div
-			class="post-preview"
+		<article
+			class="post-card{% unless post.header-img %} post-card--no-thumb{% endunless %}"
 			data-blog-post
 			data-post-categories="{% if post.categories %}{{ post.categories | join: '|' | downcase }}{% endif %}"
 		>
-			<div class="sm-1-col lg-onequarter-col pull-left">
-				{% if post.header-img %}
-				<a href="{{ post.url | prepend: site.baseurl }}" style="text-decoration:none;">
-					<img class="post-header-img" src="{{ site.baseurl }}/{{ post.header-img }}" alt="{{ post.title }}">
-				</a>
-				{% endif %}
-			</div><!-- end .sm-1-col lg-onequarter-col pull-left -->
-			<div class="sm-1-col lg-threequarter-col inline-block">
-				<a href="{{ post.url | prepend: site.baseurl }}">
-					<h2>{{ post.title }}</h2>
-				</a>
+			{% if post.header-img %}
+			<a class="post-card__thumb" href="{{ post.url | prepend: site.baseurl }}" tabindex="-1" aria-hidden="true">
+				<img src="{{ site.baseurl }}/{{ post.header-img }}" alt="" loading="lazy">
+			</a>
+			{% endif %}
+
+			<div class="post-card__body">
+				<h2 class="post-card__title">
+					<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+				</h2>
+
 				{% if post.description %}
-				<h4>{{ post.description }}</h4>
+				<p class="post-card__desc">{{ post.description }}</p>
 				{% endif %}
+
 				{% if post.categories and post.categories.size > 0 %}
 				<div class="post-meta-tags">
 					{% for item in post.categories %}
@@ -74,111 +73,15 @@ permalink: /blog/
 					{% endfor %}
 				</div>
 				{% endif %}
-				<div class="sm-1-col lg-2-col pull-left">
-					<p class="mono smaller">Published on {{ post.date | date: "%B %-d, %Y" }}
-						<br>
-						By {{ post.author }}
-					</p>
-				</div><!-- end .sm-1-col lg-2-col pull-left -->
-				<div class="sm-1-col lg-2-col inline-block">
-					<a href="{{ post.url | prepend: site.baseurl }}">
-						<p class="post-cta btn-primary">Read more</p>
-					</a>
-				</div><!-- end .sm-1-col lg-1-col inline-block -->
-			</div><!-- end .sm-1-col lg-threequarter-col inline-block -->
-		</div><!-- end .post-preview -->
+
+				<div class="post-card__meta">
+					<p class="mono smaller">Published on {{ post.date | date: "%B %-d, %Y" }} &middot; By {{ post.author }}</p>
+					<a class="btn-primary" href="{{ post.url | prepend: site.baseurl }}">Read more</a>
+				</div>
+			</div>
+		</article>
 		{% endfor %}
 	</div><!-- end .inner-wrapper -->
 </div><!-- end .page-wrapper -->
 
-<script>
-	(function () {
-		var page = document.querySelector('[data-blog-page]');
-		if (!page) {
-			return;
-		}
-
-		var filters = Array.prototype.slice.call(page.querySelectorAll('[data-category-filter]'));
-		var inlineLinks = Array.prototype.slice.call(page.querySelectorAll('[data-category-link]'));
-		var posts = Array.prototype.slice.call(page.querySelectorAll('[data-blog-post]'));
-		var resultsMeta = page.querySelector('[data-category-results-meta]');
-		var params = new URLSearchParams(window.location.search);
-		var selectedCategory = params.get('category') || 'all';
-
-		function normalize(value) {
-			return (value || '').trim().toLowerCase();
-		}
-
-		function buildUrl(category) {
-			return category === 'all'
-				? '{{ site.baseurl }}/blog/'
-				: '{{ site.baseurl }}/blog/?category=' + encodeURIComponent(category);
-		}
-
-		function updateMeta(category, visibleCount) {
-			if (!resultsMeta) {
-				return;
-			}
-
-			if (category === 'all') {
-				resultsMeta.textContent = '전체 글을 표시하는 중입니다.';
-			} else if (visibleCount > 0) {
-				resultsMeta.textContent = '"' + category + '" 카테고리 글 ' + visibleCount + '개를 표시하는 중입니다.';
-			} else {
-				resultsMeta.textContent = '"' + category + '" 카테고리의 글이 아직 없습니다.';
-			}
-		}
-
-		function applyFilter(category) {
-			var normalizedCategory = normalize(category);
-			var isAll = !normalizedCategory || normalizedCategory === 'all';
-			var visibleCount = 0;
-
-			filters.forEach(function (filter) {
-				var isMatch = normalize(filter.getAttribute('data-category-value')) === (isAll ? 'all' : normalizedCategory);
-				filter.classList.toggle('is-active', isMatch);
-			});
-
-			posts.forEach(function (post) {
-				var categories = normalize(post.getAttribute('data-post-categories')).split('|').filter(Boolean);
-				var isVisible = isAll || categories.indexOf(normalizedCategory) !== -1;
-
-				post.hidden = !isVisible;
-				post.style.display = isVisible ? '' : 'none';
-
-				if (isVisible) {
-					visibleCount += 1;
-				}
-			});
-
-			updateMeta(isAll ? 'all' : category, visibleCount);
-		}
-
-		function handleCategoryNavigation(category) {
-			var nextCategory = category || 'all';
-			window.history.pushState({ category: nextCategory }, '', buildUrl(nextCategory));
-			applyFilter(nextCategory);
-		}
-
-		filters.forEach(function (filter) {
-			filter.addEventListener('click', function (event) {
-				event.preventDefault();
-				handleCategoryNavigation(filter.getAttribute('data-category-value') || 'all');
-			});
-		});
-
-		inlineLinks.forEach(function (link) {
-			link.addEventListener('click', function (event) {
-				event.preventDefault();
-				handleCategoryNavigation(link.getAttribute('data-category-value') || 'all');
-			});
-		});
-
-		window.addEventListener('popstate', function () {
-			var nextParams = new URLSearchParams(window.location.search);
-			applyFilter(nextParams.get('category') || 'all');
-		});
-
-		applyFilter(selectedCategory);
-	})();
-</script>
+<script src="{{ site.baseurl }}/assets/js/blog-filter.js"></script>

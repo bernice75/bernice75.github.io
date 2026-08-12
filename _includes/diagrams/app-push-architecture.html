@@ -1,0 +1,157 @@
+<figure class="app-push-diagram"
+        data-app-push-diagram
+        data-delay="2600"
+        aria-labelledby="app-push-architecture-title">
+  <div class="apd-head">
+    <div>
+      <p class="apd-title" id="app-push-architecture-title">푸시 시스템 런타임 아키텍처</p>
+      <p class="apd-subtitle">세 클라이언트와 인증 경계, 중앙 저장소를 단계별로 따라갑니다.</p>
+    </div>
+    <div class="apd-controls" aria-label="다이어그램 재생 제어">
+      <button class="apd-control" type="button" data-diagram-action="play" aria-pressed="true">일시정지</button>
+      <button class="apd-control" type="button" data-diagram-action="restart">처음부터</button>
+      <button class="apd-control" type="button" data-diagram-action="expand" aria-expanded="false">크게 보기</button>
+    </div>
+  </div>
+
+  <div class="apd-steps" style="--apd-step-count:4" aria-label="아키텍처 탐색 단계">
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="true"
+            data-caption="<strong>관리자 캠페인 발송</strong> — 관리자 웹에서 만든 캠페인이 푸시 서버와 중앙 저장소를 거쳐 FCM으로 전달됩니다.">
+      <span class="apd-step-index">1</span><span class="apd-step-label">관리자 발송</span>
+    </button>
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>앱 구독 등록</strong> — 앱 토큰의 발급처와 사용자유형을 확인한 뒤 현재 계정과 기기를 연결합니다.">
+      <span class="apd-step-index">2</span><span class="apd-step-label">앱 구독</span>
+    </button>
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>키오스크 장애 알림</strong> — 등록 공인 IP로 기기를 확인하고, 생성과 발송을 한 요청에서 처리합니다.">
+      <span class="apd-step-index">3</span><span class="apd-step-label">키오스크</span>
+    </button>
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>테넌트·직원 해석</strong> — 중앙 저장소, 테넌트 마스터, 매장 POS DB를 서버가 필요한 순서로 조회합니다.">
+      <span class="apd-step-index">4</span><span class="apd-step-label">데이터 해석</span>
+    </button>
+  </div>
+
+  <div class="apd-stage">
+    <svg class="apd-svg" viewBox="0 0 1160 720" role="img"
+         aria-labelledby="app-push-architecture-svg-title app-push-architecture-svg-desc">
+      <title id="app-push-architecture-svg-title">앱 푸시 시스템 런타임 아키텍처</title>
+      <desc id="app-push-architecture-svg-desc">매출 보고서 앱, 관리자 웹, 키오스크가 Apache를 거쳐 app-push 서버를 호출하고, 서버가 인증 경계와 세 데이터 저장소 및 FCM에 연결되는 구조</desc>
+      <defs>
+        <marker id="apd-arch-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+        </marker>
+      </defs>
+
+      <rect class="apd-boundary" x="292" y="224" width="548" height="374" rx="15"></rect>
+      <text class="apd-boundary-label" x="310" y="247">중앙 서버 호스트</text>
+      <rect class="apd-boundary apd-boundary-security" x="580" y="224" width="270" height="360" rx="15"></rect>
+      <text class="apd-boundary-label apd-boundary-label-security" x="598" y="247">발급처 기반 권한 경계</text>
+
+      <g class="apd-edge-group" data-scenes="1" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-edge" d="M220 135 H410 V270" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="393" y="194">HTTPS</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.8s" repeatCount="indefinite" path="M220 135 H410 V270"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="0" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-edge" d="M220 305 H330" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="275" y="294">캠페인 생성·발송</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.4s" repeatCount="indefinite" path="M220 305 H330"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="2" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-edge" d="M220 475 H410 V340" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="368" y="424">장애 알림</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.8s" repeatCount="indefinite" path="M220 475 H410 V340"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="0 1 2" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-edge" d="M490 305 H610" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="550" y="292">출발 IP 전달</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.4s" repeatCount="indefinite" path="M490 305 H610"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="1" style="--apd-edge-color:var(--apd-rose)">
+        <path class="apd-edge" d="M695 341 V480" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="740" y="414">권한 판정</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.5s" repeatCount="indefinite" path="M695 341 V480"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="0 2" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-edge" d="M780 287 H865 V125 H930" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="870" y="197">발송</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="2s" repeatCount="indefinite" path="M780 287 H865 V125 H930"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="0 1 3" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-edge" d="M780 299 H930" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="855" y="287">구독·캠페인</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.5s" repeatCount="indefinite" path="M780 299 H930"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="2 3" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-edge" d="M780 314 H870 V465 H930" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="895" y="407">테넌트 해석</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="1.9s" repeatCount="indefinite" path="M780 314 H870 V465 H930"></animateMotion></circle>
+      </g>
+      <g class="apd-edge-group" data-scenes="3" style="--apd-edge-color:var(--apd-purple)">
+        <path class="apd-edge" d="M780 327 H850 V625 H930" marker-end="url(#apd-arch-arrow)"></path>
+        <text class="apd-edge-label" x="884" y="560">직원 조회</text>
+        <circle class="apd-packet" r="5"><animateMotion dur="2.2s" repeatCount="indefinite" path="M780 327 H850 V625 H930"></animateMotion></circle>
+      </g>
+
+      <g class="apd-node" data-scenes="1" style="--apd-accent:var(--apd-cyan)">
+        <rect class="apd-node-box" x="40" y="100" width="180" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="130" y="128">매출 보고서 앱</text>
+        <text class="apd-node-subtitle" x="130" y="147">Flutter</text>
+        <text class="apd-node-tag" x="130" y="160">앱 발급 토큰</text>
+      </g>
+      <g class="apd-node" data-scenes="0" style="--apd-accent:var(--apd-green)">
+        <rect class="apd-node-box" x="40" y="270" width="180" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="130" y="298">관리자 웹</text>
+        <text class="apd-node-subtitle" x="130" y="317">Spring Boot</text>
+        <text class="apd-node-tag" x="130" y="330">관리자 발급 토큰</text>
+      </g>
+      <g class="apd-node" data-scenes="2" style="--apd-accent:var(--apd-cyan)">
+        <rect class="apd-node-box" x="40" y="440" width="180" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="130" y="468">키오스크</text>
+        <text class="apd-node-subtitle" x="130" y="487">무인 매장 상주</text>
+        <text class="apd-node-tag" x="130" y="500">IP 화이트리스트</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1 2" style="--apd-accent:var(--apd-rose)">
+        <rect class="apd-node-box" x="330" y="270" width="160" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="410" y="299">Apache</text>
+        <text class="apd-node-subtitle" x="410" y="319">리버스 프록시 / TLS</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1 2 3" style="--apd-accent:var(--apd-green)">
+        <rect class="apd-node-box" x="610" y="270" width="170" height="72" rx="11"></rect>
+        <text class="apd-node-title" x="695" y="298">app-push</text>
+        <text class="apd-node-subtitle" x="695" y="317">Node.js 알림 서버</text>
+        <text class="apd-node-tag" x="695" y="331">DB 3계층 접속</text>
+      </g>
+      <g class="apd-node" data-scenes="1" style="--apd-accent:var(--apd-rose)">
+        <rect class="apd-node-box" x="610" y="480" width="170" height="68" rx="11"></rect>
+        <text class="apd-node-title" x="695" y="509">인증 경계</text>
+        <text class="apd-node-subtitle" x="695" y="529">발급처 × 사용자유형</text>
+        <text class="apd-node-tag" x="695" y="542">서명 키 공유</text>
+      </g>
+      <g class="apd-node" data-scenes="0 2" style="--apd-accent:var(--apd-amber)">
+        <rect class="apd-node-box" x="930" y="90" width="160" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="1010" y="119">FCM</text>
+        <text class="apd-node-subtitle" x="1010" y="139">Firebase Cloud Messaging</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1 3" style="--apd-accent:var(--apd-purple)">
+        <rect class="apd-node-box" x="930" y="260" width="160" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="1010" y="289">중앙 알림 저장소</text>
+        <text class="apd-node-subtitle" x="1010" y="309">구독 · 캠페인 · 동의</text>
+      </g>
+      <g class="apd-node" data-scenes="2 3" style="--apd-accent:var(--apd-purple)">
+        <rect class="apd-node-box" x="930" y="430" width="160" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="1010" y="459">테넌트 마스터</text>
+        <text class="apd-node-subtitle" x="1010" y="479">매장 등록 정보</text>
+      </g>
+      <g class="apd-node" data-scenes="3" style="--apd-accent:var(--apd-purple)">
+        <rect class="apd-node-box" x="930" y="590" width="160" height="70" rx="11"></rect>
+        <text class="apd-node-title" x="1010" y="619">매장 POS DB</text>
+        <text class="apd-node-subtitle" x="1010" y="639">매장별 온프레미스</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="apd-caption" data-diagram-caption aria-live="polite"></figcaption>
+</figure>

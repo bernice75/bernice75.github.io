@@ -1,0 +1,170 @@
+<figure class="app-push-diagram"
+        data-app-push-diagram
+        data-delay="3000"
+        aria-labelledby="app-push-sequence-title">
+  <div class="apd-head">
+    <div>
+      <p class="apd-title" id="app-push-sequence-title">알림 발송 두 경로</p>
+      <p class="apd-subtitle">관리자 2단계 발송, 키오스크 단일 호출, 미확인 에스컬레이션을 순서대로 보여줍니다.</p>
+    </div>
+    <div class="apd-controls" aria-label="다이어그램 재생 제어">
+      <button class="apd-control" type="button" data-diagram-action="play" aria-pressed="true">일시정지</button>
+      <button class="apd-control" type="button" data-diagram-action="restart">처음부터</button>
+      <button class="apd-control" type="button" data-diagram-action="expand" aria-expanded="false">크게 보기</button>
+    </div>
+  </div>
+
+  <div class="apd-steps" style="--apd-step-count:3" aria-label="발송 흐름 탐색 단계">
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="true"
+            data-caption="<strong>관리자 경로</strong> — 캠페인을 먼저 저장하고 검토한 뒤 별도 요청으로 발송합니다.">
+      <span class="apd-step-index">1</span><span class="apd-step-label">관리자 2단계</span>
+    </button>
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>키오스크 경로</strong> — 사람이 개입할 수 없는 무인 기기라 생성과 발송을 한 요청에서 처리합니다.">
+      <span class="apd-step-index">2</span><span class="apd-step-label">키오스크 단일 호출</span>
+    </button>
+    <button class="apd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>미확인 에스컬레이션</strong> — 담당자의 수신 확인이 없으면 같은 그룹의 매니저에게 대리 통지합니다.">
+      <span class="apd-step-index">3</span><span class="apd-step-label">미확인 대응</span>
+    </button>
+  </div>
+
+  <div class="apd-stage">
+    <svg class="apd-svg" viewBox="0 0 1020 900" role="img"
+         aria-labelledby="app-push-sequence-svg-title app-push-sequence-svg-desc">
+      <title id="app-push-sequence-svg-title">알림 발송 시퀀스</title>
+      <desc id="app-push-sequence-svg-desc">관리자 웹의 캠페인 생성과 발송, 키오스크의 장애 알림 단일 호출, 담당자 미확인 시 매니저에게 에스컬레이션하는 흐름</desc>
+      <defs>
+        <marker id="apd-seq-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+        </marker>
+      </defs>
+
+      <rect class="apd-segment" x="20" y="122" width="980" height="350" rx="12"></rect>
+      <text class="apd-segment-label" x="36" y="142">관리자 경로 — 생성과 발송이 2단계</text>
+      <rect class="apd-segment" x="20" y="488" width="980" height="178" rx="12"></rect>
+      <text class="apd-segment-label" x="36" y="508">키오스크 경로 — 호출 한 번에 생성과 발송</text>
+      <rect class="apd-segment" x="20" y="682" width="980" height="178" rx="12"></rect>
+      <text class="apd-segment-label" x="36" y="702">미확인 시 매니저 에스컬레이션</text>
+
+      <g stroke="none">
+        <line class="apd-lifeline" x1="70" y1="98" x2="70" y2="862"></line>
+        <line class="apd-lifeline" x1="210" y1="98" x2="210" y2="862"></line>
+        <line class="apd-lifeline" x1="350" y1="98" x2="350" y2="862"></line>
+        <line class="apd-lifeline" x1="490" y1="98" x2="490" y2="862"></line>
+        <line class="apd-lifeline" x1="630" y1="98" x2="630" y2="862"></line>
+        <line class="apd-lifeline" x1="770" y1="98" x2="770" y2="862"></line>
+        <line class="apd-lifeline" x1="910" y1="98" x2="910" y2="862"></line>
+      </g>
+
+      <g class="apd-activation" data-scenes="0" style="--apd-accent:var(--apd-green)"><rect x="344" y="154" width="12" height="300" rx="5"></rect></g>
+      <g class="apd-activation" data-scenes="0" style="--apd-accent:var(--apd-purple)"><rect x="484" y="194" width="12" height="138" rx="5"></rect></g>
+      <g class="apd-activation" data-scenes="0" style="--apd-accent:var(--apd-amber)"><rect x="624" y="354" width="12" height="54" rx="5"></rect></g>
+      <g class="apd-activation" data-scenes="1" style="--apd-accent:var(--apd-green)"><rect x="344" y="528" width="12" height="126" rx="5"></rect></g>
+      <g class="apd-activation" data-scenes="1" style="--apd-accent:var(--apd-amber)"><rect x="624" y="608" width="12" height="48" rx="5"></rect></g>
+      <g class="apd-activation" data-scenes="2" style="--apd-accent:var(--apd-green)"><rect x="344" y="718" width="12" height="130" rx="5"></rect></g>
+      <g class="apd-activation" data-scenes="2" style="--apd-accent:var(--apd-amber)"><rect x="624" y="758" width="12" height="52" rx="5"></rect></g>
+
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-message-line" d="M70 160 H350" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="210" y="151">캠페인 생성</text>
+        <text class="apd-note" x="210" y="173">관리자 발급 토큰이 있어야 열린다</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-message-line" d="M350 200 H490" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="420" y="191">초안 저장</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-message-line" d="M490 240 H350" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="420" y="231">캠페인 식별자</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-message-line" d="M70 280 H350" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="210" y="271">발송 요청</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-message-line" d="M350 320 H490" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="420" y="311">대상 구독·동의 조회</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-message-line" d="M350 360 H630" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="490" y="351">발송</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-purple)">
+        <path class="apd-message-line" d="M630 400 H770" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="700" y="391">알림 도착</text>
+      </g>
+      <g class="apd-message" data-scenes="0" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-message-line" d="M770 440 H350" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="560" y="431">수신 확인</text>
+      </g>
+
+      <g class="apd-message" data-scenes="1" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-message-line" d="M210 535 H350" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="280" y="526">장애 알림 요청</text>
+        <text class="apd-note" x="280" y="548">등록된 공인 IP로 인증한다</text>
+      </g>
+      <g class="apd-message" data-scenes="1" style="--apd-edge-color:var(--apd-rose)">
+        <path class="apd-message-line" d="M350 575 H490" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="420" y="566">생성과 대상 조회를 한 번에</text>
+      </g>
+      <g class="apd-message" data-scenes="1" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-message-line" d="M350 615 H630" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="490" y="606">발송</text>
+      </g>
+      <g class="apd-message" data-scenes="1" style="--apd-edge-color:var(--apd-purple)">
+        <path class="apd-message-line" d="M630 650 H770" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="700" y="641">알림 도착</text>
+      </g>
+
+      <g class="apd-message" data-scenes="2" style="--apd-edge-color:var(--apd-purple)">
+        <path class="apd-message-line" d="M350 725 H490" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="420" y="716">수신 확인 없음 감지</text>
+        <text class="apd-note" x="420" y="738">120초 판정 · 60초 배치</text>
+      </g>
+      <g class="apd-message" data-scenes="2" style="--apd-edge-color:var(--apd-green)">
+        <path class="apd-message-line" d="M350 765 H630" marker-end="url(#apd-seq-arrow)"></path>
+        <text class="apd-message-label" x="490" y="756">매니저 대상 재발송</text>
+      </g>
+      <g class="apd-message" data-scenes="2" style="--apd-edge-color:var(--apd-purple)">
+        <path class="apd-message-line" d="M630 805 H910" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="770" y="796">대리 통지</text>
+      </g>
+      <g class="apd-message" data-scenes="2" style="--apd-edge-color:var(--apd-slate)">
+        <path class="apd-message-line" d="M910 845 H350" marker-end="url(#apd-seq-arrow)" stroke-dasharray="5 5"></path>
+        <text class="apd-message-label" x="630" y="836">수신 확인</text>
+      </g>
+
+      <g class="apd-node" data-scenes="0" style="--apd-accent:var(--apd-green)">
+        <rect class="apd-node-box" x="15" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="70" y="52">관리자 웹</text><text class="apd-node-subtitle" x="70" y="70">캠페인 관리</text>
+      </g>
+      <g class="apd-node" data-scenes="1" style="--apd-accent:var(--apd-cyan)">
+        <rect class="apd-node-box" x="155" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="210" y="52">키오스크</text><text class="apd-node-subtitle" x="210" y="70">무인 매장</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1 2" style="--apd-accent:var(--apd-green)">
+        <rect class="apd-node-box" x="295" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="350" y="52">app-push</text><text class="apd-node-subtitle" x="350" y="70">알림 서버</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1 2" style="--apd-accent:var(--apd-purple)">
+        <rect class="apd-node-box" x="435" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="490" y="52">중앙 저장소</text><text class="apd-node-subtitle" x="490" y="70">구독·캠페인·이력</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1 2" style="--apd-accent:var(--apd-amber)">
+        <rect class="apd-node-box" x="575" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="630" y="52">FCM</text><text class="apd-node-subtitle" x="630" y="70">발송 대행</text>
+      </g>
+      <g class="apd-node" data-scenes="0 1" style="--apd-accent:var(--apd-cyan)">
+        <rect class="apd-node-box" x="715" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="770" y="52">담당자 앱</text><text class="apd-node-subtitle" x="770" y="70">매출 보고서 앱</text>
+      </g>
+      <g class="apd-node" data-scenes="2" style="--apd-accent:var(--apd-cyan)">
+        <rect class="apd-node-box" x="855" y="28" width="110" height="58" rx="9"></rect>
+        <text class="apd-node-title" x="910" y="52">매니저 앱</text><text class="apd-node-subtitle" x="910" y="70">그룹 단위</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="apd-caption" data-diagram-caption aria-live="polite"></figcaption>
+</figure>

@@ -120,6 +120,7 @@ description: 김미림 백엔드 개발자 이력서
         <li>WebFlux + Netty 기반 동기화 서버 장애 분석 및 리액티브 체인 최적화</li>
         <li>SSH 기반 배포 운영 통제 플랫폼(DeployX)을 자체 구축하여 배포 안정성 확보</li>
         <li>레거시 C# 키오스크 분석 및 Electron 기반 전환 설계 주도</li>
+        <li>관리자 수동 캠페인과 키오스크 자동 알림을 지원하는 사내 앱 푸시 서버 및 미확인 에스컬레이션 체계 구축</li>
       </ul>
     </div>
 
@@ -141,7 +142,7 @@ description: 김미림 백엔드 개발자 이력서
     <h2>기술 역량</h2>
     <dl class="resume-skills">
       <dt>Backend</dt>
-      <dd>Java, Spring Boot 3.x, WebFlux, Spring Event, Spring Data JPA, MyBatis, QueryDSL, Spring Security, JWT</dd>
+      <dd>Java, Spring Boot 3.x, WebFlux, Spring Event, Spring Data JPA, MyBatis, QueryDSL, Spring Security, JWT, Node.js, Express</dd>
       <dt>Architecture</dt>
       <dd>이벤트 기반 아키텍처, 리액티브 아키텍처</dd>
       <dt>Database</dt>
@@ -149,12 +150,29 @@ description: 김미림 백엔드 개발자 이력서
       <dt>Client</dt>
       <dd>Electron, React, TypeScript</dd>
       <dt>Infra</dt>
-      <dd>Apache</dd>
+      <dd>Apache, Firebase Cloud Messaging (FCM)</dd>
     </dl>
   </section>
 
   <section class="resume-section">
     <h2>주요 프로젝트</h2>
+
+    <div class="resume-project">
+      <div class="resume-entry__header">
+        <h3>사내 앱 푸시·에스컬레이션 시스템 신규 구축</h3>
+        <span>2026.07 ~ 현재</span>
+      </div>
+      <p class="resume-affiliation">소속: (주)한국밴서비스</p>
+      <p class="resume-tech">Language: JavaScript / Runtime: Node.js / Framework: Express / Database: MySQL / 기타: Firebase Admin SDK, FCM, JWT, Apache</p>
+      <p><strong>성과:</strong> 기존에 없던 사내 앱 푸시 시스템을 처음 구축해 관리자 웹·키오스크·사용자 앱을 중앙 푸시 서버로 연결하고, 테스트 배포에서 관리자 수동 캠페인과 키오스크 자동 알림의 발송·앱 수신 확인·미확인 에스컬레이션 흐름을 검증함 (운영 도입 일정 산출 중)</p>
+      <p><strong>역할</strong></p>
+      <ul class="resume-list">
+        <li>기존 POS 모놀리스에서 푸시·인증 경로를 분리하고 관리자 캠페인 생성·발송, 키오스크 자동 알림, 구독·동의·수신자별 발송 이력을 관리하는 중앙 알림 서버 설계 및 구현</li>
+        <li>토큰 발급처와 사용자 유형을 함께 판별하는 JWT 권한 경계와 키오스크 IP 화이트리스트 인증 설계</li>
+        <li>FCM 전달 결과와 앱 수신 확인(ACK)을 분리해 저장하고, 미확인 알림을 그룹 매니저에게 에스컬레이션하는 배치 흐름 구현</li>
+        <li>관리자 웹·Electron 키오스크·Flutter 앱의 API 및 인증 계약을 정의하고 구현 대조와 수동 QA를 통해 서비스 간 연계 검증</li>
+      </ul>
+    </div>
 
     <div class="resume-project">
       <div class="resume-entry__header">

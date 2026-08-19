@@ -8,4 +8,14 @@ vendor/
 .jekyll-metadata
 .bundle_home/
 blog_content/
-review/
+.claude/
+
+# Local-only content
+/docs/resume/
+/review/
+
+# Local agent instructions
+/AGENT_POLICY.md
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md

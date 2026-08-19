@@ -1,0 +1,139 @@
+<figure class="tcpip-socket-diagram"
+        data-tcpip-socket-diagram
+        data-delay="3200"
+        aria-labelledby="tcpip-protocol-design-title">
+  <div class="tsd-head">
+    <div>
+      <p class="tsd-title" id="tcpip-protocol-design-title">소켓 역할에서 프로토콜 명세까지</p>
+      <p class="tsd-subtitle">소켓의 책임을 구분하고 연산 실패를 복구 정책과 운영 명세로 연결하는 과정</p>
+    </div>
+    <div class="tsd-controls" aria-label="다이어그램 재생 제어">
+      <button class="tsd-control" type="button" data-diagram-action="play" aria-pressed="true">일시정지</button>
+      <button class="tsd-control" type="button" data-diagram-action="restart">처음부터</button>
+      <button class="tsd-control" type="button" data-diagram-action="expand" aria-expanded="false">크게 보기</button>
+    </div>
+  </div>
+
+  <div class="tsd-steps" style="--tsd-step-count:3" aria-label="프로토콜 설계 탐색 단계">
+    <button class="tsd-step" type="button" data-diagram-step aria-pressed="true"
+            data-caption="<strong>소켓 역할과 책임</strong> — 연결을 시도하는 소켓, 수락하는 소켓, 실제 통신하는 소켓을 분리합니다.">
+      <span class="tsd-step-index">1</span><span class="tsd-step-label">소켓 역할과 책임</span>
+    </button>
+    <button class="tsd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>실패 분류와 복구</strong> — 모든 소켓 연산의 실패를 재시도, 세션 종료, 재연결 중 하나로 분류합니다.">
+      <span class="tsd-step-index">2</span><span class="tsd-step-label">실패 분류와 복구</span>
+    </button>
+    <button class="tsd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>운영 계약으로서의 명세</strong> — 프레이밍, timeout, 오류 응답과 버전 규칙을 서버와 클라이언트가 공유합니다.">
+      <span class="tsd-step-index">3</span><span class="tsd-step-label">운영 계약으로서의 명세</span>
+    </button>
+  </div>
+
+  <div class="tsd-stage">
+    <svg class="tsd-svg" viewBox="0 0 920 550" role="img"
+         aria-labelledby="tcpip-protocol-design-svg-title tcpip-protocol-design-svg-desc">
+      <title id="tcpip-protocol-design-svg-title">소켓 역할, 실패 처리와 프로토콜 명세의 연결</title>
+      <desc id="tcpip-protocol-design-svg-desc">클라이언트 소켓과 리스닝 소켓이 연결된 소켓으로 모이고, 실제 소켓 연산의 실패를 분류해 복구 정책을 결정한 뒤 프로토콜 명세에 운영 계약으로 기록한다.</desc>
+      <defs>
+        <marker id="tsd-protocol-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"></path>
+        </marker>
+      </defs>
+
+      <rect class="tsd-section" x="22" y="34" width="876" height="142" rx="12"></rect>
+      <rect class="tsd-section" x="22" y="194" width="876" height="160" rx="12"></rect>
+      <rect class="tsd-section" x="22" y="372" width="876" height="144" rx="12"></rect>
+      <text class="tsd-section-label" x="40" y="58">01 / 소켓 역할 분리</text>
+      <text class="tsd-section-label" x="40" y="218">02 / 실행과 실패 정책</text>
+      <text class="tsd-section-label" x="40" y="396">03 / 공유 운영 계약</text>
+
+      <g class="tsd-node" data-scenes="0" style="--tsd-accent:var(--tsd-cyan)">
+        <rect class="tsd-node-box" x="58" y="84" width="150" height="66" rx="10"></rect>
+        <text class="tsd-node-title" x="133" y="112">Client socket</text>
+        <text class="tsd-node-subtitle" x="133" y="133">연결 시도 · connect</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="0" style="--tsd-accent:var(--tsd-green)">
+        <rect class="tsd-node-box" x="282" y="84" width="158" height="66" rx="10"></rect>
+        <text class="tsd-node-title" x="361" y="112">Listening socket</text>
+        <text class="tsd-node-subtitle" x="361" y="133">bind · listen · accept</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="0 1" style="--tsd-accent:var(--tsd-purple)">
+        <rect class="tsd-node-box" x="520" y="84" width="158" height="66" rx="10"></rect>
+        <text class="tsd-node-title" x="599" y="112">Connected socket</text>
+        <text class="tsd-node-subtitle" x="599" y="133">실제 통신 세션</text>
+      </g>
+
+      <g class="tsd-edge-group" data-scenes="0" style="--tsd-edge-color:var(--tsd-cyan)">
+        <path class="tsd-edge" d="M208 117 H276" marker-end="url(#tsd-protocol-arrow)"></path>
+        <text class="tsd-edge-label" x="242" y="105">connect</text>
+      </g>
+      <g class="tsd-edge-group" data-scenes="0" style="--tsd-edge-color:var(--tsd-green)">
+        <path class="tsd-edge" d="M440 117 H514" marker-end="url(#tsd-protocol-arrow)"></path>
+        <text class="tsd-edge-label" x="477" y="105">accept</text>
+      </g>
+      <g class="tsd-node" data-scenes="0" style="--tsd-accent:var(--tsd-slate)">
+        <rect class="tsd-node-box" x="748" y="84" width="118" height="66" rx="10"></rect>
+        <text class="tsd-node-title" x="807" y="112">책임 분리</text>
+        <text class="tsd-node-subtitle" x="807" y="133">연결과 업무 처리</text>
+      </g>
+      <g class="tsd-edge-group" data-scenes="0" style="--tsd-edge-color:var(--tsd-purple)">
+        <path class="tsd-edge" d="M678 117 H742" marker-end="url(#tsd-protocol-arrow)"></path>
+      </g>
+
+      <g class="tsd-node" data-scenes="1" style="--tsd-accent:var(--tsd-amber)">
+        <rect class="tsd-node-box" x="124" y="245" width="162" height="70" rx="10"></rect>
+        <text class="tsd-node-title" x="205" y="274">소켓 연산</text>
+        <text class="tsd-node-subtitle" x="205" y="296">connect · send · receive · close</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="1" style="--tsd-accent:var(--tsd-rose)">
+        <rect class="tsd-node-box" x="382" y="245" width="154" height="70" rx="10"></rect>
+        <text class="tsd-node-title" x="459" y="274">실패 분류</text>
+        <text class="tsd-node-subtitle" x="459" y="296">재시도 가능한가?</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="1 2" style="--tsd-accent:var(--tsd-rose)">
+        <rect class="tsd-node-box" x="632" y="245" width="162" height="70" rx="10"></rect>
+        <text class="tsd-node-title" x="713" y="274">복구 정책</text>
+        <text class="tsd-node-subtitle" x="713" y="296">재시도 · 종료 · 재연결</text>
+      </g>
+
+      <g class="tsd-edge-group" data-scenes="1" style="--tsd-edge-color:var(--tsd-amber)">
+        <path class="tsd-edge" d="M599 150 V220 H205 V239" marker-end="url(#tsd-protocol-arrow)"></path>
+        <path class="tsd-edge" d="M286 280 H376" marker-end="url(#tsd-protocol-arrow)"></path>
+      </g>
+      <g class="tsd-edge-group" data-scenes="1" style="--tsd-edge-color:var(--tsd-rose)">
+        <path class="tsd-edge" d="M536 280 H626" marker-end="url(#tsd-protocol-arrow)"></path>
+        <text class="tsd-edge-label" x="581" y="266">실패별 행동 결정</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="2" style="--tsd-accent:var(--tsd-green)">
+        <rect class="tsd-node-box" x="302" y="414" width="316" height="72" rx="11"></rect>
+        <text class="tsd-node-title" x="460" y="441">애플리케이션 프로토콜 명세</text>
+        <text class="tsd-node-subtitle" x="460" y="463">프레이밍 · 최대 크기 · timeout · heartbeat · 오류 응답 · 버전</text>
+      </g>
+
+      <g class="tsd-edge-group" data-scenes="2" style="--tsd-edge-color:var(--tsd-green)">
+        <path class="tsd-edge" d="M713 315 V346 H460 V408" marker-end="url(#tsd-protocol-arrow)"></path>
+        <text class="tsd-edge-label" x="594" y="342">실패 정책을 문서로 고정</text>
+      </g>
+
+      <g data-scenes="2">
+        <rect class="tsd-byte" x="70" y="425" width="154" height="48" rx="8" style="--tsd-accent:var(--tsd-cyan)"></rect>
+        <text class="tsd-byte-label" x="147" y="446">서버와 클라이언트가</text>
+        <text class="tsd-byte-label" x="147" y="461">같은 규칙을 공유</text>
+        <rect class="tsd-byte" x="696" y="425" width="154" height="48" rx="8" style="--tsd-accent:var(--tsd-purple)"></rect>
+        <text class="tsd-byte-label" x="773" y="446">장애 대응의 기준이 되는</text>
+        <text class="tsd-byte-label" x="773" y="461">운영 계약</text>
+        <path class="tsd-edge" d="M224 449 H296 M618 449 H690" style="--tsd-edge-color:var(--tsd-green)" marker-end="url(#tsd-protocol-arrow)"></path>
+      </g>
+    </svg>
+  </div>
+
+  <p class="tsd-caption" data-diagram-caption>
+    <strong>소켓 역할과 책임</strong> — 연결을 시도하는 소켓, 수락하는 소켓, 실제 통신하는 소켓을 분리합니다.
+  </p>
+</figure>

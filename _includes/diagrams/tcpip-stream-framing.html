@@ -1,0 +1,138 @@
+<figure class="tcpip-socket-diagram"
+        data-tcpip-socket-diagram
+        data-delay="3000"
+        aria-labelledby="tcpip-stream-framing-title">
+  <div class="tsd-head">
+    <div>
+      <p class="tsd-title" id="tcpip-stream-framing-title">TCP 스트림과 메시지 프레이밍</p>
+      <p class="tsd-subtitle">두 번의 send가 하나의 바이트 스트림이 되고, 수신 측이 프레임 경계를 복원하는 과정</p>
+    </div>
+    <div class="tsd-controls" aria-label="다이어그램 재생 제어">
+      <button class="tsd-control" type="button" data-diagram-action="play" aria-pressed="true">일시정지</button>
+      <button class="tsd-control" type="button" data-diagram-action="restart">처음부터</button>
+      <button class="tsd-control" type="button" data-diagram-action="expand" aria-expanded="false">크게 보기</button>
+    </div>
+  </div>
+
+  <div class="tsd-steps" style="--tsd-step-count:2" aria-label="TCP 스트림 탐색 단계">
+    <button class="tsd-step" type="button" data-diagram-step aria-pressed="true"
+            data-caption="<strong>송신 호출과 스트림</strong> — 두 번의 send 경계는 TCP 바이트 스트림에 보존되지 않습니다.">
+      <span class="tsd-step-index">1</span><span class="tsd-step-label">송신 호출과 바이트 스트림</span>
+    </button>
+    <button class="tsd-step" type="button" data-diagram-step aria-pressed="false"
+            data-caption="<strong>수신 조각과 프레임 복원</strong> — receive 조각을 누적한 뒤 애플리케이션 규칙으로 메시지 A와 B를 복원합니다.">
+      <span class="tsd-step-index">2</span><span class="tsd-step-label">수신 조각과 프레임 복원</span>
+    </button>
+  </div>
+
+  <div class="tsd-stage">
+    <svg class="tsd-svg" viewBox="0 0 900 500" role="img"
+         aria-labelledby="tcpip-stream-framing-svg-title tcpip-stream-framing-svg-desc">
+      <title id="tcpip-stream-framing-svg-title">TCP 바이트 스트림에서 메시지 경계를 복원하는 흐름</title>
+      <desc id="tcpip-stream-framing-svg-desc">송신 애플리케이션이 메시지 A와 B를 두 번 send해도 TCP는 연속 바이트로 전달하며, 수신 측은 세 번의 receive 결과를 누적해 프레이밍 규칙으로 두 메시지를 복원한다.</desc>
+      <defs>
+        <marker id="tsd-stream-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"></path>
+        </marker>
+      </defs>
+
+      <rect class="tsd-section" x="20" y="34" width="250" height="430" rx="12"></rect>
+      <rect class="tsd-section" x="286" y="34" width="328" height="430" rx="12"></rect>
+      <rect class="tsd-section" x="630" y="34" width="250" height="430" rx="12"></rect>
+      <text class="tsd-section-label" x="38" y="58">01 / 송신 호출</text>
+      <text class="tsd-section-label" x="304" y="58">02 / TCP 바이트 스트림</text>
+      <text class="tsd-section-label" x="648" y="58">03 / 수신과 프레임 복원</text>
+
+      <g class="tsd-node" data-scenes="0" style="--tsd-accent:var(--tsd-cyan)">
+        <rect class="tsd-node-box" x="60" y="102" width="165" height="68" rx="10"></rect>
+        <text class="tsd-node-title" x="142" y="130">송신 애플리케이션</text>
+        <text class="tsd-node-subtitle" x="142" y="151">메시지 A · 메시지 B</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="0" style="--tsd-accent:var(--tsd-green)">
+        <rect class="tsd-node-box" x="60" y="282" width="165" height="68" rx="10"></rect>
+        <text class="tsd-node-title" x="142" y="310">client socket</text>
+        <text class="tsd-node-subtitle" x="142" y="331">send 호출</text>
+      </g>
+
+      <g class="tsd-edge-group" data-scenes="0" style="--tsd-edge-color:var(--tsd-cyan)">
+        <path class="tsd-edge" d="M142 170 V210" marker-end="url(#tsd-stream-arrow)"></path>
+        <rect class="tsd-byte" x="76" y="212" width="56" height="30" rx="6" style="--tsd-accent:var(--tsd-cyan)"></rect>
+        <rect class="tsd-byte" x="152" y="212" width="56" height="30" rx="6" style="--tsd-accent:var(--tsd-purple)"></rect>
+        <text class="tsd-byte-label" x="104" y="231">send(A)</text>
+        <text class="tsd-byte-label" x="180" y="231">send(B)</text>
+        <path class="tsd-edge" d="M104 242 V278 M180 242 V278" marker-end="url(#tsd-stream-arrow)"></path>
+      </g>
+
+      <g data-scenes="0 1">
+        <text class="tsd-note" x="450" y="104">send 경계는 스트림에 기록되지 않는다</text>
+        <g style="--tsd-accent:var(--tsd-cyan)">
+          <rect class="tsd-byte" x="318" y="136" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="366" y="136" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="414" y="136" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="462" y="136" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="510" y="136" width="48" height="42" rx="5"></rect>
+          <text class="tsd-byte-label" x="342" y="161">A1</text><text class="tsd-byte-label" x="390" y="161">A2</text>
+          <text class="tsd-byte-label" x="438" y="161">A3</text><text class="tsd-byte-label" x="486" y="161">A4</text>
+          <text class="tsd-byte-label" x="534" y="161">A5</text>
+        </g>
+        <g style="--tsd-accent:var(--tsd-purple)">
+          <rect class="tsd-byte" x="342" y="178" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="390" y="178" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="438" y="178" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="486" y="178" width="48" height="42" rx="5"></rect>
+          <rect class="tsd-byte" x="534" y="178" width="48" height="42" rx="5"></rect>
+          <text class="tsd-byte-label" x="366" y="203">B1</text><text class="tsd-byte-label" x="414" y="203">B2</text>
+          <text class="tsd-byte-label" x="462" y="203">B3</text><text class="tsd-byte-label" x="510" y="203">B4</text>
+          <text class="tsd-byte-label" x="558" y="203">B5</text>
+        </g>
+      </g>
+
+      <g class="tsd-edge-group" data-scenes="0" style="--tsd-edge-color:var(--tsd-green)">
+        <path class="tsd-edge" d="M225 316 H272 V157 H312" marker-end="url(#tsd-stream-arrow)"></path>
+        <text class="tsd-edge-label" x="270" y="301">연속 바이트 기록</text>
+      </g>
+
+      <g data-scenes="1">
+        <text class="tsd-section-label" x="320" y="274">receive 결과</text>
+        <path class="tsd-brace" d="M320 292 H390 M402 292 H474 M486 292 H582"></path>
+        <text class="tsd-edge-label" x="355" y="315">3 bytes</text>
+        <text class="tsd-edge-label" x="438" y="315">2 bytes</text>
+        <text class="tsd-edge-label" x="534" y="315">5 bytes</text>
+        <path class="tsd-divider" d="M396 282 V322 M480 282 V322"></path>
+      </g>
+
+      <g class="tsd-node" data-scenes="1" style="--tsd-accent:var(--tsd-green)">
+        <rect class="tsd-node-box" x="674" y="102" width="162" height="68" rx="10"></rect>
+        <text class="tsd-node-title" x="755" y="130">server socket</text>
+        <text class="tsd-node-subtitle" x="755" y="151">receive · 누적</text>
+      </g>
+
+      <g class="tsd-node" data-scenes="1" style="--tsd-accent:var(--tsd-amber)">
+        <rect class="tsd-node-box" x="674" y="230" width="162" height="68" rx="10"></rect>
+        <text class="tsd-node-title" x="755" y="258">frame decoder</text>
+        <text class="tsd-node-subtitle" x="755" y="279">length-prefix · delimiter</text>
+      </g>
+
+      <g class="tsd-edge-group" data-scenes="1" style="--tsd-edge-color:var(--tsd-green)">
+        <path class="tsd-edge" d="M588 199 H620 V136 H668" marker-end="url(#tsd-stream-arrow)"></path>
+        <path class="tsd-edge" d="M755 170 V224" marker-end="url(#tsd-stream-arrow)"></path>
+      </g>
+
+      <g data-scenes="1">
+        <rect class="tsd-byte" x="666" y="358" width="76" height="42" rx="7" style="--tsd-accent:var(--tsd-cyan)"></rect>
+        <rect class="tsd-byte" x="768" y="358" width="76" height="42" rx="7" style="--tsd-accent:var(--tsd-purple)"></rect>
+        <text class="tsd-byte-label" x="704" y="383">message A</text>
+        <text class="tsd-byte-label" x="806" y="383">message B</text>
+        <path class="tsd-edge" d="M755 298 V336 H704 V352 M755 336 H806 V352"
+              style="--tsd-edge-color:var(--tsd-amber)" marker-end="url(#tsd-stream-arrow)"></path>
+        <text class="tsd-note" x="755" y="432">프레이밍 규칙이 메시지 경계를 복원한다</text>
+      </g>
+    </svg>
+  </div>
+
+  <p class="tsd-caption" data-diagram-caption>
+    <strong>송신 호출과 스트림</strong> — 두 번의 send 경계는 TCP 바이트 스트림에 보존되지 않습니다.
+  </p>
+</figure>

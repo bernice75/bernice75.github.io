@@ -12,14 +12,21 @@ categories:
   - Network
   - Backend
 ---
-
-1편 [TCP는 메시지를 모른다]({% post_url 2026-04-17-tcpip-sockets-faq-series-1 %}) 에서는 TCP가 메시지를 보존하는 프로토콜이 아니라 바이트 스트림 프로토콜이라는 점을 정리했습니다.<br>
+1편 [TCP는 메시지를 모른다]({% post_url 2026-04-17-tcpip-sockets-faq-series-1 %})에서는 TCP가 메시지를 보존하는 프로토콜이 아니라 바이트 스트림 프로토콜이라는 점을 정리했습니다.<br>
 이번에는 운영에서 더 무섭게 다가오는 문제, **"연결이 이미 죽었는데 한쪽은 그 사실을 모르는 상태"**를 다뤄보려 합니다.
 
 동기화 서버를 다루다 보면 요청이 끝나지 않는데 에러도 명확히 남지 않는 상황이 더 어렵게 느껴질 때가 있습니다.<br>
 그때마다 "이 연결을 어디까지 믿고 기다려야 하는가"라는 질문이 남았습니다.
 
 이 주제 역시 Stephen Cleary의 FAQ에서 별도 글로 설명하고 있으며, 글 하단의 참고 링크에서 확인하실 수 있습니다.
+
+<br>
+
+## 시리즈 안내
+
+1. [**1편**: TCP 스트림과 메시지 프레이밍]({% post_url 2026-04-17-tcpip-sockets-faq-series-1 %})
+2. **2편**: half-open connection과 타임아웃 설계 (현재 글)
+3. [**3편**: 소켓 생명주기, 에러 처리, 프로토콜 문서화]({% post_url 2026-08-18-tcpip-sockets-faq-series-3 %})
 
 <br>
 
@@ -56,6 +63,7 @@ TCP의 기본 책임은 바이트 스트림을 순서대로, 손실 없이 전�
 ## half-open connection은 어떻게 생길까
 
 RFC 793 문서에는 TCP half-open을 다음과 같이 설명합니다.
+
 > TCP 연결의 한쪽 끝에 있는 호스트가 충돌했거나 다른 쪽 끝에 알리지 않고 소켓을 제거한 경우<br>
 > 나머지 쪽 끝이 유휴 상태인 경우 연결은 무한정 half-open 상태로 유지될 수 있다.
 
@@ -105,6 +113,12 @@ TCP는 데이터 송신에 대해서는 ACK와 오류 경로가 있지만, 수�
 이 문제를 읽고 나서 든 결론은 단순했습니다.
 
 > TCP 연결 유지는 TCP가 해주지만, 응답 가능성 보장은 애플리케이션이 설계해야 한다.
+
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tcpip-socket-diagrams.css">
+
+{% include diagrams/tcpip-half-open.html %}
+
+<script defer src="{{ site.baseurl }}/assets/js/tcpip-socket-diagrams.js"></script>
 
 FAQ에서는 dropped connection을 감지하는 방법을 잘못된 방법과 올바른 방법으로 나누어 설명합니다.<br>
 먼저 잘못된 방법부터 짚고 넘어가는 편이 오해를 줄이는 데 좋습니다.

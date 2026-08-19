@@ -12,7 +12,6 @@ categories:
   - Network
   - Backend
 ---
-
 이전에 Netty 기반 동기화 서버의 장애를 정리한 글을 작성한 뒤, 부족했던 데이터 스트림 개념을 이번 기회에 한 번 제대로 잡고 가고 싶어졌습니다.<br>
 그 과정에서 Stephen Cleary의 **TCP/IP .NET Sockets FAQ** 시리즈를 읽게 되었고, 이번 글부터 3편으로 나누어 핵심 내용을 정리해보려 합니다.<br>
 이 시리즈는 원문의 내용을 번역한 것이 아니라, 원문에서 제시한 개념을 제 운영 경험과 함께 다시 엮은 학습 기록입니다.
@@ -21,9 +20,9 @@ categories:
 
 ## 시리즈 안내
 
-1. **1편**: TCP 스트림과 메시지 프레이밍
-2. **2편**: half-open connection과 타임아웃 설계(soon...)
-3. **3편**: 소켓 생명주기, 에러 처리, 프로토콜 문서화(soon...)
+1. **1편**: TCP 스트림과 메시지 프레이밍 (현재 글)
+2. [**2편**: half-open connection과 타임아웃 설계]({% post_url 2026-04-29-tcpip-sockets-faq-series-2 %})
+3. [**3편**: 소켓 생명주기, 에러 처리, 프로토콜 문서화]({% post_url 2026-08-18-tcpip-sockets-faq-series-3 %})
 
 <br>
 
@@ -80,6 +79,12 @@ FAQ에서는 이를 **message framing** 문제로 설명합니다.
 
 > "수신 측은 어디까지를 하나의 메시지로 볼 것인가?"
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tcpip-socket-diagrams.css">
+
+{% include diagrams/tcpip-stream-framing.html %}
+
+<script defer src="{{ site.baseurl }}/assets/js/tcpip-socket-diagrams.js"></script>
+
 이 질문에 답하는 대표 방식은 2가지입니다.
 
 ### 1. Length-prefix 방식
@@ -128,7 +133,6 @@ Stephen Cleary의 FAQ를 읽고 나서, 프레이밍 문제를 고려하지 못�
 당시 `LineBasedFrameDecoder`, `LengthFieldBasedFrameDecoder`, `JsonObjectDecoder`를 어떤 기준으로 검토하고 적용했는지는 이전 포스팅에 조금 더 자세히 정리해두었습니다.<br>
 
 - [동기화 서버를 정신 차리게 해보자(feat. 리팩터링)]({% post_url 2026-03-05-config-tcp-server-refactoring %})
-
 <br>
 
 ## 프레이밍 코드는 곧 방어 코드이기도 하다
@@ -155,7 +159,7 @@ FAQ에서 특히 좋았던 부분은 보안성까지 함께 언급한다는 점�
 이번 1편에서 제가 다시 붙잡게 된 문장은 이것입니다.
 
 > Repeat this mantra three times: “TCP does not operate on packets of data. TCP operates on streams of data.”<br>
-> _(이 말을 세 번 반복하세요: “TCP는 데이터 패킷으로 동작하지 않는다. TCP는 데이터 스트림으로 동작한다.”)_
+> *(이 말을 세 번 반복하세요: “TCP는 데이터 패킷으로 동작하지 않는다. TCP는 데이터 스트림으로 동작한다.”)*
 
 이 사실을 받아들이고 나면, 애플리케이션 프로토콜 설계에서 다음 판단이 훨씬 선명해집니다.
 

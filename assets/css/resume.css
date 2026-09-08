@@ -1,7 +1,56 @@
-/* Resume page (/resume/) only. Loaded via page.extra_css in resume.html. */
+/* Resume page (/resume/) only. Loaded via page.extra_css in resume.md. */
 
 .resume-header {
   margin: 0 0 2.4rem;
+}
+
+.resume-print-photo,
+.resume-print-contact,
+.resume-actions [hidden] {
+  display: none !important;
+}
+
+#resume-photo-status {
+  flex-basis: 100%;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.resume-contact-inputs {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.resume-contact-inputs legend,
+.resume-contact-inputs label {
+  font-weight: 600;
+}
+
+.resume-contact-inputs p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.resume-contact-inputs input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.resume-contact-inputs button {
+  justify-self: start;
+  margin-top: 0.5rem;
 }
 
 .resume-header h1 {
@@ -35,6 +84,26 @@
 
 .resume-section h3 {
   margin: 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--color-text-heading);
+  color: var(--color-text-strongest);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.resume-section h4 {
+  margin: 0;
+  color: var(--color-text-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.resume-section .resume-subsection-title {
+  margin: 1.35rem 0 0.8rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-border-subtle);
   color: var(--color-text-heading);
   font-size: 1rem;
   font-weight: 700;
@@ -136,6 +205,20 @@
   margin: 0 0 1.65rem;
 }
 
+.resume-additional-entry {
+  margin: 0 0 0.8rem;
+}
+
+.resume-additional-entry p,
+.resume-plain-list p {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.resume-plain-list p + p {
+  margin-top: 0.55rem;
+}
+
 .resume-project {
   padding-bottom: 1.35rem;
   border-bottom: 1px solid var(--color-border-subtle);
@@ -154,7 +237,8 @@
   margin-bottom: 0.35rem;
 }
 
-.resume-entry__header span {
+.resume-entry__header .resume-date {
+  margin: 0;
   flex: 0 0 auto;
   color: var(--color-text-subtle);
   font-size: 0.92rem;
@@ -193,7 +277,7 @@
     display: block;
   }
 
-  .resume-entry__header span {
+  .resume-entry__header .resume-date {
     display: block;
     margin-top: 0.15rem;
   }
@@ -207,6 +291,40 @@
 }
 
 @media print {
+  .resume-contact-inputs {
+    display: none !important;
+  }
+
+  .resume-print-contact:not([hidden]) {
+    display: block !important;
+    margin-top: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+
+  .resume-print-contact p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .resume-header--with-photo {
+    position: relative;
+    min-height: 45mm;
+    padding-right: 42mm;
+    box-sizing: border-box;
+    break-inside: avoid;
+  }
+
+  .resume-header .resume-print-photo {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35mm;
+    height: 45mm;
+    object-fit: contain;
+    filter: none;
+  }
+
   .resume-header {
     margin-bottom: 1.4rem;
   }
@@ -217,7 +335,8 @@
 
   .resume-section {
     margin-bottom: 1.55rem;
-    break-inside: avoid;
+    break-inside: auto;
+    page-break-inside: auto;
   }
 
   .resume-section h2 {
@@ -234,8 +353,23 @@
     font-size: 1rem;
   }
 
-  .resume-project,
   .resume-entry {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .resume-entry__header {
+    break-inside: avoid;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .resume-project {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .resume-list li {
     break-inside: avoid;
   }
 }

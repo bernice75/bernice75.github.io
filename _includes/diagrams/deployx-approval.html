@@ -1,0 +1,29 @@
+<figure class="deployx-diagram" aria-labelledby="dx-approval-title">
+  <p class="dx-eyebrow">DEPLOYX · APPROVAL</p>
+  <p class="dx-title" id="dx-approval-title">평소에는 승인, 긴급할 때는 허용된 담당자가 실행</p>
+  <p class="dx-subtitle">요청 시 선택한 버전을 배포합니다. VIEWER는 배포를 실행하지 않습니다.</p>
+  <div class="dx-paths">
+    <div class="dx-lane">
+      <p class="dx-lane-title">일반 OPERATOR<br><span class="dx-note">승인 기반 배포</span></p>
+      <ol>
+        <li><span class="dx-node">대상 버전 선택</span></li>
+        <li><span class="dx-node">승인 요청 · ADMIN에게 메일</span></li>
+        <li><span class="dx-node dx-node-accent">ADMIN 승인</span></li>
+      </ol>
+      <p class="dx-note">거절된 요청은 배포로 이어지지 않습니다.</p>
+    </div>
+    <div class="dx-lane">
+      <p class="dx-lane-title">ADMIN / 긴급 권한 OPERATOR<br><span class="dx-note">즉시 배포</span></p>
+      <ol>
+        <li><span class="dx-node">대상 버전 선택</span></li>
+        <li><span class="dx-node dx-node-accent">승인 대기 없이 실행 요청</span></li>
+      </ol>
+      <p class="dx-note">긴급 권한은 지정된 OPERATOR에게만 부여합니다.</p>
+    </div>
+  </div>
+  <div class="dx-down">두 경로 모두 ↓</div>
+  <div class="dx-outcome"><strong>배포 시작 가능 여부 확인 → 배포 실행</strong><p class="dx-note">같은 앱의 배포가 진행 중이면 새 배포 시작은 차단됩니다.</p></div>
+  <div class="dx-down" aria-hidden="true">↓</div>
+  <div class="dx-outcome"><strong>배포 결과 확인 · 결과 메일 발송 시도</strong><p class="dx-note">승인 배포의 결과는 요청자와 승인자에게 알립니다.</p></div>
+  <figcaption>감사 로그에는 요청·승인·거절·배포 실행 행위를, 배포 로그에는 상세 과정과 결과를 남깁니다. 승인 완료는 배포 성공을 뜻하지 않습니다.</figcaption>
+</figure>

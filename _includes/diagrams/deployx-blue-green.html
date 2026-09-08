@@ -1,0 +1,33 @@
+<figure class="deployx-diagram" data-deployx-blue-green aria-labelledby="dx-bg-title">
+  <p class="dx-eyebrow">DEPLOYX · BLUE–GREEN</p>
+  <p class="dx-title" id="dx-bg-title">새 버전을 확인하고, 트래픽을 옮깁니다</p>
+  <p class="dx-subtitle">기존 BLUE → 신규 GREEN 예시 · 단계 버튼을 눌러 요청 경로와 프로세스 상태를 확인하세요.</p>
+  <div class="dx-steps dx-interactive" role="group" aria-label="Blue-Green 배포 단계">
+    <button type="button" data-dx-step="0" aria-pressed="true">1. 신규 실행</button>
+    <button type="button" data-dx-step="1" aria-pressed="false">2. 내부 확인</button>
+    <button type="button" data-dx-step="2" aria-pressed="false">3. Apache 전환</button>
+    <button type="button" data-dx-step="3" aria-pressed="false">4. 외부 확인</button>
+    <button type="button" data-dx-step="4" aria-pressed="false">5. 30초 대기</button>
+    <button type="button" data-dx-step="5" aria-pressed="false">6. 이전 정리</button>
+  </div>
+  <div class="dx-topology" aria-label="Apache와 두 서비스 프로세스">
+    <div class="dx-client">사용자 요청<div class="dx-down" aria-hidden="true">↓</div></div>
+    <div class="dx-proxy"><strong>Apache reverse proxy</strong><small data-dx-proxy>기존 BLUE로 요청 전달</small></div>
+    <div class="dx-route" data-dx-route-blue data-serving="true">↓ 요청 전달</div><div></div><div class="dx-route" data-dx-route-green>트래픽 대기</div>
+    <div class="dx-server dx-server-blue" data-dx-blue data-serving="true"><strong>BLUE · 기존 버전</strong><small data-dx-blue-state>서비스 제공 중</small></div>
+    <div></div>
+    <div class="dx-server dx-server-green" data-dx-green><strong>GREEN · 새 버전</strong><small data-dx-green-state>비활성 포트에서 기동</small></div>
+  </div>
+  <div class="dx-caption" aria-live="polite" aria-atomic="true"><strong data-dx-caption-title>1. 비활성 포트에 새 버전 실행</strong><span data-dx-caption>BLUE가 요청을 처리하는 동안 GREEN을 기동합니다.</span></div>
+  <details class="dx-recovery">
+    <summary>외부 확인에 실패하면?</summary>
+    <ol>
+      <li>기존 BLUE proxy 설정 복원 시도</li>
+      <li>Apache reload 시도</li>
+      <li>신규 GREEN 정리 후 배포 실패 기록</li>
+    </ol>
+    <p class="dx-note">기존 BLUE 프로세스는 유지합니다. 설정 복원이나 reload도 실패할 수 있으며, 아래 버튼은 두 작업이 성공한 경우를 보여줍니다. 다른 단계의 실패 조건은 본문 표를 참고하세요.</p>
+    <button class="dx-interactive" type="button" data-dx-recovery aria-pressed="false">복구 작업 성공 시 상태 보기</button>
+  </details>
+  <figcaption>정상 순서: 신규 실행 → 내부 확인 3회 연속 성공 → proxy switch·reload → 외부 확인 3회 연속 성공 → active 갱신·30초 drain → 이전 프로세스 정리. 개념 예시이며 모든 요청의 무중단을 보장하는 그림은 아닙니다.</figcaption>
+</figure>

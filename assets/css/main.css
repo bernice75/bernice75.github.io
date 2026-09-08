@@ -614,6 +614,17 @@ pre code {
   margin-top: 1.75rem;
 }
 
+.home-page h3 {
+  margin: 2rem 0 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--color-text-heading);
+  color: var(--color-text-strongest);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.55;
+  break-after: avoid;
+}
+
 .about-actions {
   margin: 1.5rem 0 2rem;
 }
@@ -654,11 +665,43 @@ pre code {
 }
 
 .portfolio h3 {
-  margin: 1.55rem 0 0.55rem;
+  margin: 2rem 0 0.85rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--color-text-heading);
+  color: var(--color-text-strongest);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.portfolio h4 {
+  margin: 1.25rem 0 0.55rem;
   color: var(--color-text-heading);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.55;
+}
+
+.portfolio .portfolio-summary-line,
+.portfolio .portfolio-meta,
+.portfolio .portfolio-tech {
+  text-align: left;
+}
+
+.portfolio .portfolio-summary-line {
+  margin: 0.35rem 0;
+}
+
+.portfolio .portfolio-meta {
+  margin: -0.3rem 0 0.45rem;
+  color: var(--color-text-subtle);
+  font-size: 0.92rem;
+}
+
+.portfolio .portfolio-tech {
+  margin: 0 0 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
 }
 
 .portfolio p,
@@ -1440,12 +1483,14 @@ pre code {
     page-break-after: avoid;
   }
 
-  .portfolio h3 {
+  .portfolio h3,
+  .portfolio h4 {
     break-after: avoid;
     page-break-after: avoid;
   }
 
   .portfolio h3,
+  .portfolio h4,
   .portfolio p,
   .portfolio li {
     font-size: 1rem;

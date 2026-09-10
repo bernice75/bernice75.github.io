@@ -82,6 +82,22 @@
   line-height: 1.45;
 }
 
+.resume-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.resume-total-experience {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+
 .resume-section h3 {
   margin: 0;
   padding-left: 0.75rem;

@@ -82,6 +82,22 @@
   line-height: 1.45;
 }
 
+.resume-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.resume-total-experience {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+
 .resume-section h3 {
   margin: 0;
   padding-left: 0.75rem;
@@ -253,11 +269,15 @@
 }
 
 .resume-skills {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  align-items: baseline;
   margin: 0;
 }
 
 .resume-skills dt {
-  margin: 0.9rem 0 0.25rem;
+  margin: 0;
   color: var(--color-text-heading);
   font-weight: 700;
 }
@@ -273,6 +293,15 @@
 }
 
 @media screen and (max-width: 767px) {
+  .resume-skills {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.15rem;
+  }
+
+  .resume-skills dd + dt {
+    margin-top: 0.5rem;
+  }
+
   .resume-entry__header {
     display: block;
   }

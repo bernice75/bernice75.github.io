@@ -13,6 +13,7 @@ blog_content/
 # Local-only content
 /docs/resume/
 /review/
+/assiste/
 
 # Local agent instructions
 /AGENT_POLICY.md

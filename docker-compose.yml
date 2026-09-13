@@ -3,9 +3,13 @@ version: '2'
 services:
   site:
     container_name: simpol-theme
-    command: jekyll serve --watch --incremental
+    command: bundle exec jekyll serve --watch --incremental --host 0.0.0.0
     image: jekyll/jekyll:latest
     volumes:
       - $PWD:/srv/jekyll
+      - bundle_cache:/usr/local/bundle
     ports:
       - 4000:4000
+
+volumes:
+  bundle_cache:

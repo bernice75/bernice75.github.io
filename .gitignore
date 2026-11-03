@@ -14,6 +14,7 @@ blog_content/
 /docs/resume/
 /review/
 /assiste/
+/local.docs/
 
 # Local agent instructions
 /AGENT_POLICY.md
